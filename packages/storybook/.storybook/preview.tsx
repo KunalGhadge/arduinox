@@ -1,4 +1,4 @@
-import "@opencode-ai/ui/styles"
+import "@arduinox-ai/ui/styles"
 
 import { createEffect, onCleanup, onMount } from "solid-js"
 import addonA11y from "@storybook/addon-a11y"
@@ -7,14 +7,14 @@ import { MetaProvider } from "@solidjs/meta"
 import { addons } from "storybook/preview-api"
 import { GLOBALS_UPDATED } from "storybook/internal/core-events"
 import { createJSXDecorator, definePreview } from "storybook-solidjs-vite"
-import { Code } from "@opencode-ai/ui/code"
-import { CodeComponentProvider } from "@opencode-ai/ui/context/code"
-import { DialogProvider } from "@opencode-ai/ui/context/dialog"
-import { DiffComponentProvider } from "@opencode-ai/ui/context/diff"
-import { MarkedProvider } from "@opencode-ai/ui/context/marked"
-import { Diff } from "@opencode-ai/ui/diff"
-import { ThemeProvider, useTheme, type ColorScheme } from "@opencode-ai/ui/theme"
-import { Font } from "@opencode-ai/ui/font"
+import { Code } from "@arduinox-ai/ui/code"
+import { CodeComponentProvider } from "@arduinox-ai/ui/context/code"
+import { DialogProvider } from "@arduinox-ai/ui/context/dialog"
+import { DiffComponentProvider } from "@arduinox-ai/ui/context/diff"
+import { MarkedProvider } from "@arduinox-ai/ui/context/marked"
+import { Diff } from "@arduinox-ai/ui/diff"
+import { ThemeProvider, useTheme, type ColorScheme } from "@arduinox-ai/ui/theme"
+import { Font } from "@arduinox-ai/ui/font"
 
 function resolveScheme(value: unknown): ColorScheme {
   if (value === "light" || value === "dark" || value === "system") return value

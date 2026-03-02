@@ -1,6 +1,6 @@
-# OpenCode Desktop
+# ArduinoX Desktop
 
-Native OpenCode desktop app, built with Tauri v2.
+Native ArduinoX desktop app, built with Tauri v2.
 
 ## Prerequisites
 

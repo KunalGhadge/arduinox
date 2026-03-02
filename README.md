@@ -1,17 +1,17 @@
 <p align="center">
-  <a href="https://opencode.ai">
+  <a href="https://arduinox.ai">
     <picture>
       <source srcset="packages/console/app/src/asset/logo-ornate-dark.svg" media="(prefers-color-scheme: dark)">
       <source srcset="packages/console/app/src/asset/logo-ornate-light.svg" media="(prefers-color-scheme: light)">
-      <img src="packages/console/app/src/asset/logo-ornate-light.svg" alt="OpenCode logo">
+      <img src="packages/console/app/src/asset/logo-ornate-light.svg" alt="ArduinoX logo">
     </picture>
   </a>
 </p>
 <p align="center">The open source AI coding agent.</p>
 <p align="center">
-  <a href="https://opencode.ai/discord"><img alt="Discord" src="https://img.shields.io/discord/1391832426048651334?style=flat-square&label=discord" /></a>
-  <a href="https://www.npmjs.com/package/opencode-ai"><img alt="npm" src="https://img.shields.io/npm/v/opencode-ai?style=flat-square" /></a>
-  <a href="https://github.com/anomalyco/opencode/actions/workflows/publish.yml"><img alt="Build status" src="https://img.shields.io/github/actions/workflow/status/anomalyco/opencode/publish.yml?style=flat-square&branch=dev" /></a>
+  <a href="https://arduinox.ai/discord"><img alt="Discord" src="https://img.shields.io/discord/1391832426048651334?style=flat-square&label=discord" /></a>
+  <a href="https://www.npmjs.com/package/arduinox-ai"><img alt="npm" src="https://img.shields.io/npm/v/arduinox-ai?style=flat-square" /></a>
+  <a href="https://github.com/anomalyco/arduinox/actions/workflows/publish.yml"><img alt="Build status" src="https://img.shields.io/github/actions/workflow/status/anomalyco/arduinox/publish.yml?style=flat-square&branch=dev" /></a>
 </p>
 
 <p align="center">
@@ -38,26 +38,77 @@
   <a href="README.gr.md">Ελληνικά</a>
 </p>
 
-[![OpenCode Terminal UI](packages/web/src/assets/lander/screenshot.png)](https://opencode.ai)
+[![ArduinoX Terminal UI](packages/web/src/assets/lander/screenshot.png)](https://arduinox.ai)
+
+## What is ArduinoX?
+
+**ArduinoX** is a state-of-the-art, open-source AI coding agent specifically optimized for **Arduino and hardware development**. 
+
+Built for the terminal and designed to feel premium, it bridges the gap between high-level AI reasoning and low-level hardware execution.
+
+### Key Features:
+*   **Hardware-Centric Intelligence**: Tailored for embedded C++, circuit planning, and sensor integration.
+*   **Portable "Zero-Setup" Mode**: Bundles the **Arduino CLI** directly, allowing you to compile and upload code without manual installations.
+*   **Provider Agnostic**: Use built-in **ArduinoX Zen** models, or connect your own keys for Claude, GPT-4, or Google Gemini.
+*   **Deep TUI Experience**: A blazingly fast Terminal User Interface with rich aesthetics and real-time "Vercel" dark-mode styling.
+
+---
+
+### Quick Start
+
+To start an interactive AI session and begin building:
+
+```bash
+# Start the TUI
+arduinox run
+```
+
+---
+
+### Usage
+
+ArduinoX is primarily driven through the **Terminal User Interface (TUI)**. Once you run `arduinox run`, you can:
+
+*   **Ask Anything**: Type your hardware or code questions directly.
+*   **Switch Agents**: Press `Tab` to switch between **Build** (Full Access) and **Plan** (Read-Only) modes.
+*   **Run Commands**: Use the terminal within the TUI to compile for specific boards.
+*   **Configuration**: All settings are stored in `~/.arduinox/config.json`.
+
+#### Common Commands
+
+| Command | Description |
+| --- | --- |
+| `arduinox run` | Start the main AI session |
+| `arduinox auth login` | Log in to your ArduinoX Zen account |
+| `arduinox models list` | See all available AI models |
+| `arduinox --version` | Check your current version |
 
 ---
 
 ### Installation
 
-```bash
-# YOLO
-curl -fsSL https://opencode.ai/install | bash
+#### One-Liner (Recommended)
 
-# Package managers
-npm i -g opencode-ai@latest        # or bun/pnpm/yarn
-scoop install opencode             # Windows
-choco install opencode             # Windows
-brew install anomalyco/tap/opencode # macOS and Linux (recommended, always up to date)
-brew install opencode              # macOS and Linux (official brew formula, updated less)
-sudo pacman -S opencode            # Arch Linux (Stable)
-paru -S opencode-bin               # Arch Linux (Latest from AUR)
-mise use -g opencode               # Any OS
-nix run nixpkgs#opencode           # or github:anomalyco/opencode for latest dev branch
+**Windows (PowerShell)**:
+```powershell
+powershell -ExecutionPolicy ByPass -c "irm https://raw.githubusercontent.com/anomalyco/arduinox/main/install.ps1 | iex"
+```
+
+**macOS / Linux (Bash)**:
+```bash
+curl -fsSL https://raw.githubusercontent.com/anomalyco/arduinox/main/install | bash
+```
+
+#### Package Managers
+
+```bash
+npm i -g arduinox-ai@latest        # or bun/pnpm/yarn
+scoop install arduinox             # Windows
+choco install arduinox             # Windows
+brew install anomalyco/tap/arduinox # macOS and Linux (recommended)
+sudo pacman -S arduinox            # Arch Linux
+mise use -g arduinox               # Any OS
+nix run nixpkgs#arduinox           # or github:anomalyco/arduinox
 ```
 
 > [!TIP]
@@ -65,40 +116,40 @@ nix run nixpkgs#opencode           # or github:anomalyco/opencode for latest dev
 
 ### Desktop App (BETA)
 
-OpenCode is also available as a desktop application. Download directly from the [releases page](https://github.com/anomalyco/opencode/releases) or [opencode.ai/download](https://opencode.ai/download).
+ArduinoX is also available as a desktop application. Download directly from the [releases page](https://github.com/anomalyco/arduinox/releases) or [arduinox.ai/download](https://arduinox.ai/download).
 
 | Platform              | Download                              |
 | --------------------- | ------------------------------------- |
-| macOS (Apple Silicon) | `opencode-desktop-darwin-aarch64.dmg` |
-| macOS (Intel)         | `opencode-desktop-darwin-x64.dmg`     |
-| Windows               | `opencode-desktop-windows-x64.exe`    |
+| macOS (Apple Silicon) | `arduinox-desktop-darwin-aarch64.dmg` |
+| macOS (Intel)         | `arduinox-desktop-darwin-x64.dmg`     |
+| Windows               | `arduinox-desktop-windows-x64.exe`    |
 | Linux                 | `.deb`, `.rpm`, or AppImage           |
 
 ```bash
 # macOS (Homebrew)
-brew install --cask opencode-desktop
+brew install --cask arduinox-desktop
 # Windows (Scoop)
-scoop bucket add extras; scoop install extras/opencode-desktop
+scoop bucket add extras; scoop install extras/arduinox-desktop
 ```
 
 #### Installation Directory
 
 The install script respects the following priority order for the installation path:
 
-1. `$OPENCODE_INSTALL_DIR` - Custom installation directory
+1. `$ARDUINOX_INSTALL_DIR` - Custom installation directory
 2. `$XDG_BIN_DIR` - XDG Base Directory Specification compliant path
 3. `$HOME/bin` - Standard user binary directory (if it exists or can be created)
-4. `$HOME/.opencode/bin` - Default fallback
+4. `$HOME/.arduinox/bin` - Default fallback
 
 ```bash
 # Examples
-OPENCODE_INSTALL_DIR=/usr/local/bin curl -fsSL https://opencode.ai/install | bash
-XDG_BIN_DIR=$HOME/.local/bin curl -fsSL https://opencode.ai/install | bash
+ARDUINOX_INSTALL_DIR=/usr/local/bin curl -fsSL https://arduinox.ai/install | bash
+XDG_BIN_DIR=$HOME/.local/bin curl -fsSL https://arduinox.ai/install | bash
 ```
 
 ### Agents
 
-OpenCode includes two built-in agents you can switch between with the `Tab` key.
+ArduinoX includes two built-in agents you can switch between with the `Tab` key.
 
 - **build** - Default, full-access agent for development work
 - **plan** - Read-only agent for analysis and code exploration
@@ -109,19 +160,19 @@ OpenCode includes two built-in agents you can switch between with the `Tab` key.
 Also included is a **general** subagent for complex searches and multistep tasks.
 This is used internally and can be invoked using `@general` in messages.
 
-Learn more about [agents](https://opencode.ai/docs/agents).
+Learn more about [agents](https://arduinox.ai/docs/agents).
 
 ### Documentation
 
-For more info on how to configure OpenCode, [**head over to our docs**](https://opencode.ai/docs).
+For more info on how to configure ArduinoX, [**head over to our docs**](https://arduinox.ai/docs).
 
 ### Contributing
 
-If you're interested in contributing to OpenCode, please read our [contributing docs](./CONTRIBUTING.md) before submitting a pull request.
+If you're interested in contributing to ArduinoX, please read our [contributing docs](./CONTRIBUTING.md) before submitting a pull request.
 
-### Building on OpenCode
+### Building on ArduinoX
 
-If you are working on a project that's related to OpenCode and is using "opencode" as part of its name, for example "opencode-dashboard" or "opencode-mobile", please add a note to your README to clarify that it is not built by the OpenCode team and is not affiliated with us in any way.
+If you are working on a project that's related to ArduinoX and is using "arduinox" as part of its name, for example "arduinox-dashboard" or "arduinox-mobile", please add a note to your README to clarify that it is not built by the ArduinoX team and is not affiliated with us in any way.
 
 ### FAQ
 
@@ -130,11 +181,11 @@ If you are working on a project that's related to OpenCode and is using "opencod
 It's very similar to Claude Code in terms of capability. Here are the key differences:
 
 - 100% open source
-- Not coupled to any provider. Although we recommend the models we provide through [OpenCode Zen](https://opencode.ai/zen), OpenCode can be used with Claude, OpenAI, Google, or even local models. As models evolve, the gaps between them will close and pricing will drop, so being provider-agnostic is important.
+- Not coupled to any provider. Although we recommend the models we provide through [ArduinoX Zen](https://arduinox.ai/zen), ArduinoX can be used with Claude, OpenAI, Google, or even local models. As models evolve, the gaps between them will close and pricing will drop, so being provider-agnostic is important.
 - Out-of-the-box LSP support
-- A focus on TUI. OpenCode is built by neovim users and the creators of [terminal.shop](https://terminal.shop); we are going to push the limits of what's possible in the terminal.
-- A client/server architecture. This, for example, can allow OpenCode to run on your computer while you drive it remotely from a mobile app, meaning that the TUI frontend is just one of the possible clients.
+- A focus on TUI. ArduinoX is built by neovim users and the creators of [terminal.shop](https://terminal.shop); we are going to push the limits of what's possible in the terminal.
+- A client/server architecture. This, for example, can allow ArduinoX to run on your computer while you drive it remotely from a mobile app, meaning that the TUI frontend is just one of the possible clients.
 
 ---
 
-**Join our community** [Discord](https://discord.gg/opencode) | [X.com](https://x.com/opencode)
+**Join our community** [Discord](https://discord.gg/arduinox) | [X.com](https://x.com/arduinox)

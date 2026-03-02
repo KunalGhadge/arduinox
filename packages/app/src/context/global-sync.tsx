@@ -6,9 +6,9 @@ import type {
   ProviderAuthResponse,
   ProviderListResponse,
   Todo,
-} from "@opencode-ai/sdk/v2/client"
-import { showToast } from "@opencode-ai/ui/toast"
-import { getFilename } from "@opencode-ai/util/path"
+} from "@arduinox-ai/sdk/v2/client"
+import { showToast } from "@arduinox-ai/ui/toast"
+import { getFilename } from "@arduinox-ai/util/path"
 import {
   createContext,
   createEffect,

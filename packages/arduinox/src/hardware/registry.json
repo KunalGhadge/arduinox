@@ -1,0 +1,205 @@
+{
+    "boards": [
+        {
+            "id": "arduino_uno_r3",
+            "name": "Arduino Uno R3",
+            "type": "base_board",
+            "fqbn": "arduino:avr:uno",
+            "operating_voltage": "5V",
+            "digital_pins": [
+                0,
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12,
+                13
+            ],
+            "analog_pins": [
+                "A0",
+                "A1",
+                "A2",
+                "A3",
+                "A4",
+                "A5"
+            ],
+            "pwm_pins": [
+                3,
+                5,
+                6,
+                9,
+                10,
+                11
+            ],
+            "communication": {
+                "i2c": {
+                    "sda": "A4",
+                    "scl": "A5"
+                },
+                "spi": {
+                    "ss": 10,
+                    "mosi": 11,
+                    "miso": 12,
+                    "sck": 13
+                },
+                "serial": {
+                    "rx": 0,
+                    "tx": 1
+                }
+            },
+            "description": "The classic Arduino Uno R3. Uses the ATmega328P microcontroller."
+        },
+        {
+            "id": "esp32_wroom",
+            "name": "ESP32 WROOM 32",
+            "type": "base_board",
+            "fqbn": "esp32:esp32:esp32",
+            "operating_voltage": "3.3V",
+            "digital_pins": [
+                2,
+                4,
+                5,
+                12,
+                13,
+                14,
+                15,
+                18,
+                19,
+                21,
+                22,
+                23,
+                25,
+                26,
+                27,
+                32,
+                33
+            ],
+            "analog_pins": [
+                32,
+                33,
+                34,
+                35,
+                36,
+                39
+            ],
+            "pwm_pins": [
+                2,
+                4,
+                5,
+                12,
+                13,
+                14,
+                15,
+                18,
+                19,
+                21,
+                22,
+                23,
+                25,
+                26,
+                27,
+                32,
+                33
+            ],
+            "communication": {
+                "i2c": {
+                    "sda": 21,
+                    "scl": 22
+                },
+                "spi": {
+                    "ss": 5,
+                    "mosi": 23,
+                    "miso": 19,
+                    "sck": 18
+                },
+                "serial": {
+                    "rx": 3,
+                    "tx": 1
+                }
+            },
+            "description": "Powerful WiFi and Bluetooth capable microcontroller. Note: 3.3V logic only!"
+        }
+    ],
+    "components": [
+        {
+            "id": "ir_sensor_tcrt5000",
+            "name": "IR Obstacle Avoidance Sensor (TCRT5000)",
+            "type": "sensor",
+            "operating_voltage": "3.3V - 5V",
+            "pins": {
+                "vcc": "Power (+)",
+                "gnd": "Ground (-)",
+                "out": "Digital Output (LOW when obstacle detected)"
+            },
+            "libraries_required": [],
+            "description": "Standard infrared proximity/obstacle sensor. Good for visitor counters."
+        },
+        {
+            "id": "lcd_16x2_i2c",
+            "name": "16x2 Character LCD with I2C Backpack",
+            "type": "display",
+            "operating_voltage": "5V",
+            "pins": {
+                "gnd": "Ground (-)",
+                "vcc": "5V Power (+)",
+                "sda": "I2C Data line (Connect to board SDA)",
+                "scl": "I2C Clock line (Connect to board SCL)"
+            },
+            "libraries_required": [
+                "LiquidCrystal I2C"
+            ],
+            "description": "A 16-character by 2-line LCD display that uses only two pins (I2C) for communication."
+        },
+        {
+            "id": "dht11",
+            "name": "DHT11 Temperature and Humidity Sensor",
+            "type": "sensor",
+            "operating_voltage": "3.3V - 5V",
+            "pins": {
+                "vcc": "Power (+)",
+                "data": "Digital Data Out",
+                "gnd": "Ground (-)"
+            },
+            "libraries_required": [
+                "DHT sensor library"
+            ],
+            "description": "Basic digital temperature and humidity sensor."
+        },
+        {
+            "id": "ultrasonic_hcsr04",
+            "name": "HC-SR04 Ultrasonic Distance Sensor",
+            "type": "sensor",
+            "operating_voltage": "5V",
+            "pins": {
+                "vcc": "Power (+)",
+                "trig": "Trigger Input",
+                "echo": "Echo Output",
+                "gnd": "Ground (-)"
+            },
+            "libraries_required": [],
+            "description": "Measuring distance using ultrasound. Range: 2cm to 400cm."
+        },
+        {
+            "id": "servo_sg90",
+            "name": "SG90 Micro Servo Motor",
+            "type": "actuator",
+            "operating_voltage": "4.8V - 6V",
+            "pins": {
+                "signal": "PWM Signal (usually Orange/White)",
+                "vcc": "Power (Red)",
+                "gnd": "Ground (Brown/Black)"
+            },
+            "libraries_required": [
+                "Servo"
+            ],
+            "description": "Small 180-degree servo for robotics and small mechanisms."
+        }
+    ]
+}

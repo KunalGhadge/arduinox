@@ -1,7 +1,7 @@
-import type { Todo } from "@opencode-ai/sdk/v2"
-import { Checkbox } from "@opencode-ai/ui/checkbox"
-import { DockTray } from "@opencode-ai/ui/dock-surface"
-import { IconButton } from "@opencode-ai/ui/icon-button"
+import type { Todo } from "@arduinox-ai/sdk/v2"
+import { Checkbox } from "@arduinox-ai/ui/checkbox"
+import { DockTray } from "@arduinox-ai/ui/dock-surface"
+import { IconButton } from "@arduinox-ai/ui/icon-button"
 import { For, Show, createEffect, createMemo, createSignal, on, onCleanup } from "solid-js"
 import { createStore } from "solid-js/store"
 

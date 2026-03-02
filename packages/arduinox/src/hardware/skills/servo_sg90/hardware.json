@@ -1,0 +1,15 @@
+{
+    "id": "servo_sg90",
+    "name": "SG90 Micro Servo Motor",
+    "type": "actuator",
+    "operating_voltage": "4.8V - 6V",
+    "pins": {
+        "vcc": "Power (Red)",
+        "gnd": "Ground (Brown/Black)",
+        "signal": "PWM Signal (Orange/White)"
+    },
+    "libraries_required": [
+        "Servo"
+    ],
+    "description": "Small 180-degree servo for robotics and small mechanisms."
+}

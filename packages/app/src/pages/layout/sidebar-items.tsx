@@ -4,17 +4,17 @@ import { useLanguage } from "@/context/language"
 import { useLayout, type LocalProject, getAvatarColors } from "@/context/layout"
 import { useNotification } from "@/context/notification"
 import { usePermission } from "@/context/permission"
-import { base64Encode } from "@opencode-ai/util/encode"
-import { Avatar } from "@opencode-ai/ui/avatar"
-import { DiffChanges } from "@opencode-ai/ui/diff-changes"
-import { HoverCard } from "@opencode-ai/ui/hover-card"
-import { Icon } from "@opencode-ai/ui/icon"
-import { IconButton } from "@opencode-ai/ui/icon-button"
-import { MessageNav } from "@opencode-ai/ui/message-nav"
-import { Spinner } from "@opencode-ai/ui/spinner"
-import { Tooltip } from "@opencode-ai/ui/tooltip"
-import { getFilename } from "@opencode-ai/util/path"
-import { type Message, type Session, type TextPart, type UserMessage } from "@opencode-ai/sdk/v2/client"
+import { base64Encode } from "@arduinox-ai/util/encode"
+import { Avatar } from "@arduinox-ai/ui/avatar"
+import { DiffChanges } from "@arduinox-ai/ui/diff-changes"
+import { HoverCard } from "@arduinox-ai/ui/hover-card"
+import { Icon } from "@arduinox-ai/ui/icon"
+import { IconButton } from "@arduinox-ai/ui/icon-button"
+import { MessageNav } from "@arduinox-ai/ui/message-nav"
+import { Spinner } from "@arduinox-ai/ui/spinner"
+import { Tooltip } from "@arduinox-ai/ui/tooltip"
+import { getFilename } from "@arduinox-ai/util/path"
+import { type Message, type Session, type TextPart, type UserMessage } from "@arduinox-ai/sdk/v2/client"
 import { For, Match, Show, Switch, createMemo, onCleanup, type Accessor, type JSX } from "solid-js"
 import { agentColor } from "@/utils/agent"
 import { hasProjectPermissions } from "./helpers"
@@ -45,7 +45,7 @@ export const ProjectIcon = (props: { project: LocalProject; class?: string; noti
         <Avatar
           fallback={name()}
           src={
-            props.project.id === OPENCODE_PROJECT_ID ? "https://opencode.ai/favicon.svg" : props.project.icon?.override
+            props.project.id === OPENCODE_PROJECT_ID ? "https://arduinox.ai/favicon.svg" : props.project.icon?.override
           }
           {...getAvatarColors(props.project.icon?.color)}
           class="size-full rounded"

@@ -1,0 +1,16 @@
+{
+    "id": "ultrasonic_hcsr04",
+    "name": "HC-SR04 Ultrasonic Distance Sensor",
+    "type": "sensor",
+    "operating_voltage": "5V",
+    "pins": {
+        "vcc": "5V Power (+)",
+        "gnd": "Ground (-)",
+        "trig": "Trigger Input (Digital Out)",
+        "echo": "Echo Output (Digital In)"
+    },
+    "libraries_required": [
+        "NewPing"
+    ],
+    "description": "Measures distance using ultrasonic pulses. Range: 2cm to 400cm."
+}

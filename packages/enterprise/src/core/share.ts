@@ -1,10 +1,10 @@
-import { FileDiff, Message, Model, Part, Session } from "@opencode-ai/sdk/v2"
-import { fn } from "@opencode-ai/util/fn"
-import { iife } from "@opencode-ai/util/iife"
-import { Identifier } from "@opencode-ai/util/identifier"
+import { FileDiff, Message, Model, Part, Session } from "@arduinox-ai/sdk/v2"
+import { fn } from "@arduinox-ai/util/fn"
+import { iife } from "@arduinox-ai/util/iife"
+import { Identifier } from "@arduinox-ai/util/identifier"
 import z from "zod"
 import { Storage } from "./storage"
-import { Binary } from "@opencode-ai/util/binary"
+import { Binary } from "@arduinox-ai/util/binary"
 
 export namespace Share {
   export const Info = z.object({

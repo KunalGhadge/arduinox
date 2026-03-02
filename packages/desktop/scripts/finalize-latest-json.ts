@@ -17,7 +17,7 @@ import { parseArgs } from "node:util"
 const repo = process.env.GH_REPO
 if (!repo) throw new Error("GH_REPO is required")
 
-const releaseId = process.env.OPENCODE_RELEASE
+const releaseId = process.env.ARDUINOX_RELEASE
 if (!releaseId) throw new Error("OPENCODE_RELEASE is required")
 
 const token = process.env.GH_TOKEN ?? process.env.GITHUB_TOKEN

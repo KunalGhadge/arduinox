@@ -1,8 +1,8 @@
-import { Database, eq, and, sql, inArray } from "@opencode-ai/console-core/drizzle/index.js"
-import { IpRateLimitTable } from "@opencode-ai/console-core/schema/ip.sql.js"
+import { Database, eq, and, sql, inArray } from "@arduinox-ai/console-core/drizzle/index.js"
+import { IpRateLimitTable } from "@arduinox-ai/console-core/schema/ip.sql.js"
 import { FreeUsageLimitError } from "./error"
 import { logger } from "./logger"
-import { ZenData } from "@opencode-ai/console-core/model.js"
+import { ZenData } from "@arduinox-ai/console-core/model.js"
 import { i18n } from "~/i18n"
 import { localeFromRequest } from "~/lib/language"
 

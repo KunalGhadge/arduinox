@@ -9,7 +9,7 @@ import {
 } from "../actions"
 import { sessionItemSelector, inlineInputSelector } from "../selectors"
 
-const shareDisabled = process.env.OPENCODE_DISABLE_SHARE === "true" || process.env.OPENCODE_DISABLE_SHARE === "1"
+const shareDisabled = process.env.ARDUINOX_DISABLE_SHARE === "true" || process.env.ARDUINOX_DISABLE_SHARE === "1"
 
 type Sdk = Parameters<typeof withSession>[0]
 

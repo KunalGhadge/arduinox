@@ -159,7 +159,7 @@ export async function createMenu(trigger: (id: string) => void) {
         items: [
           // missing native macos search
           await MenuItem.new({
-            action: () => openUrl("https://opencode.ai/docs"),
+            action: () => openUrl("https://arduinox.ai/docs"),
             text: t("desktop.menu.help.documentation"),
           }),
           await MenuItem.new({
