@@ -9,9 +9,9 @@ export namespace Hardware {
  */
     export function getSkillsDir(): string | null {
         const candidates = [
-            path.join(Instance.directory, "packages", "opencode", "src", "hardware", "skills"),
+            path.join(Instance.directory, "packages", "arduinox", "src", "hardware", "skills"),
             path.join(Instance.directory, "src", "hardware", "skills"),
-            path.join(process.cwd(), "packages", "opencode", "src", "hardware", "skills")
+            path.join(process.cwd(), "packages", "arduinox", "src", "hardware", "skills")
         ]
 
         for (const candidate of candidates) {
