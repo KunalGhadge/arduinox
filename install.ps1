@@ -1,10 +1,10 @@
 # ArduinoX Windows Installer
-# Usage: powershell -ExecutionPolicy ByPass -c "irm https://raw.githubusercontent.com/anomalyco/arduinox/main/install.ps1 | iex"
+# Usage: powershell -ExecutionPolicy ByPass -c "irm https://raw.githubusercontent.com/KunalGhadge/arduinox/main/install.ps1 | iex"
 
 $ErrorActionPreference = "Stop"
 
 $app = "arduinox"
-$repo = "anomalyco/arduinox"
+$repo = "KunalGhadge/arduinox"
 $installDir = "$HOME\.arduinox\bin"
 
 Write-Host "ArduinoX Installer" -ForegroundColor Cyan

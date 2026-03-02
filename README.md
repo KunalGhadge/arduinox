@@ -11,7 +11,7 @@
 <p align="center">
   <a href="https://arduinox.ai/discord"><img alt="Discord" src="https://img.shields.io/discord/1391832426048651334?style=flat-square&label=discord" /></a>
   <a href="https://www.npmjs.com/package/arduinox-ai"><img alt="npm" src="https://img.shields.io/npm/v/arduinox-ai?style=flat-square" /></a>
-  <a href="https://github.com/anomalyco/arduinox/actions/workflows/publish.yml"><img alt="Build status" src="https://img.shields.io/github/actions/workflow/status/anomalyco/arduinox/publish.yml?style=flat-square&branch=dev" /></a>
+  <a href="https://github.com/KunalGhadge/arduinox/actions/workflows/publish.yml"><img alt="Build status" src="https://img.shields.io/github/actions/workflow/status/KunalGhadge/arduinox/publish.yml?style=flat-square&branch=dev" /></a>
 </p>
 
 <p align="center">
@@ -91,12 +91,12 @@ ArduinoX is primarily driven through the **Terminal User Interface (TUI)**. Once
 
 **Windows (PowerShell)**:
 ```powershell
-powershell -ExecutionPolicy ByPass -c "irm https://raw.githubusercontent.com/anomalyco/arduinox/main/install.ps1 | iex"
+powershell -ExecutionPolicy ByPass -c "irm https://raw.githubusercontent.com/KunalGhadge/arduinox/main/install.ps1 | iex"
 ```
 
 **macOS / Linux (Bash)**:
 ```bash
-curl -fsSL https://raw.githubusercontent.com/anomalyco/arduinox/main/install | bash
+curl -fsSL https://raw.githubusercontent.com/KunalGhadge/arduinox/main/install | bash
 ```
 
 #### Package Managers
@@ -105,10 +105,10 @@ curl -fsSL https://raw.githubusercontent.com/anomalyco/arduinox/main/install | b
 npm i -g arduinox-ai@latest        # or bun/pnpm/yarn
 scoop install arduinox             # Windows
 choco install arduinox             # Windows
-brew install anomalyco/tap/arduinox # macOS and Linux (recommended)
+brew install KunalGhadge/tap/arduinox # macOS and Linux (recommended)
 sudo pacman -S arduinox            # Arch Linux
 mise use -g arduinox               # Any OS
-nix run nixpkgs#arduinox           # or github:anomalyco/arduinox
+nix run nixpkgs#arduinox           # or github:KunalGhadge/arduinox
 ```
 
 > [!TIP]
@@ -116,7 +116,7 @@ nix run nixpkgs#arduinox           # or github:anomalyco/arduinox
 
 ### Desktop App (BETA)
 
-ArduinoX is also available as a desktop application. Download directly from the [releases page](https://github.com/anomalyco/arduinox/releases) or [arduinox.ai/download](https://arduinox.ai/download).
+ArduinoX is also available as a desktop application. Download directly from the [releases page](https://github.com/KunalGhadge/arduinox/releases) or [arduinox.ai/download](https://arduinox.ai/download).
 
 | Platform              | Download                              |
 | --------------------- | ------------------------------------- |
