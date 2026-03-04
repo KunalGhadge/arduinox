@@ -1,0 +1,17 @@
+{
+    "id": "lcd_16x2_i2c",
+    "name": "16x2 Character LCD with I2C Backpack",
+    "type": "display",
+    "operating_voltage": "5V",
+    "pins": {
+        "vcc": "5V Power (+)",
+        "gnd": "Ground (-)",
+        "sda": "I2C Data",
+        "scl": "I2C Clock"
+    },
+    "i2c_address": "0x27 or 0x3F",
+    "libraries_required": [
+        "LiquidCrystal I2C"
+    ],
+    "description": "Standard alphanumeric LCD that uses the I2C protocol."
+}

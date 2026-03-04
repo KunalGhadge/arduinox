@@ -1,0 +1,12 @@
+{
+    "id": "fan_5v_dc",
+    "name": "5V DC Cooling Fan",
+    "type": "actuator",
+    "operating_voltage": "5V",
+    "pins": {
+        "vcc": "Power (Red)",
+        "gnd": "Ground (Black)"
+    },
+    "libraries_required": [],
+    "description": "Standard DC brushless fan for active cooling."
+}

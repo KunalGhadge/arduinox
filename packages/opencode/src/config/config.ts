@@ -1167,6 +1167,14 @@ export namespace Config {
             .describe("Timeout in milliseconds for model context protocol (MCP) requests"),
         })
         .optional(),
+      arduinox: z
+        .object({
+          mode: z
+            .enum(["manual", "ask", "automatic"])
+            .default("ask")
+            .describe("Controls how the agent runs hardware commands. 'manual' = agent writes code then stops, user triggers /compile and /upload. 'ask' = agent proposes next step and waits for approval. 'automatic' = agent runs full pipeline automatically."),
+        })
+        .optional(),
     })
     .strict()
     .meta({
@@ -1198,7 +1206,7 @@ export namespace Config {
           await Filesystem.writeJson(path.join(Global.Path.config, "config.json"), result)
           await fs.unlink(legacy)
         })
-        .catch(() => {})
+        .catch(() => { })
     }
 
     return result
@@ -1239,7 +1247,7 @@ export namespace Config {
       if (!parsed.data.$schema && isFile) {
         parsed.data.$schema = "https://opencode.ai/config.json"
         const updated = original.replace(/^\s*\{/, '{\n  "$schema": "https://opencode.ai/config.json",')
-        await Bun.write(options.path, updated).catch(() => {})
+        await Bun.write(options.path, updated).catch(() => { })
       }
       const data = parsed.data
       if (data.plugin && isFile) {

@@ -1,0 +1,16 @@
+{
+    "id": "dht11",
+    "name": "DHT11 Temperature and Humidity Sensor",
+    "type": "sensor",
+    "operating_voltage": "3.3V - 5V",
+    "pins": {
+        "vcc": "Power (+)",
+        "gnd": "Ground (-)",
+        "data": "Digital Data Out"
+    },
+    "libraries_required": [
+        "DHT sensor library",
+        "Adafruit Unified Sensor"
+    ],
+    "description": "Standard digital sensor for temperature and humidity. Slow but reliable."
+}

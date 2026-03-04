@@ -1,17 +1,17 @@
 <p align="center">
-  <a href="https://opencode.ai">
+  <a href="https://arduinox.ai">
     <picture>
       <source srcset="packages/console/app/src/asset/logo-ornate-dark.svg" media="(prefers-color-scheme: dark)">
       <source srcset="packages/console/app/src/asset/logo-ornate-light.svg" media="(prefers-color-scheme: light)">
-      <img src="packages/console/app/src/asset/logo-ornate-light.svg" alt="OpenCode logo">
+      <img src="packages/console/app/src/asset/logo-ornate-light.svg" alt="ArduinoX logo">
     </picture>
   </a>
 </p>
-<p align="center">오픈 소스 AI 코딩 에이전트.</p>
+<p align="center">**Arduino와 하드웨어 개발**을 위해 특별히 설계된 세계 최초의 에이전트 AI 코딩 어시스턴트.</p>
 <p align="center">
-  <a href="https://opencode.ai/discord"><img alt="Discord" src="https://img.shields.io/discord/1391832426048651334?style=flat-square&label=discord" /></a>
-  <a href="https://www.npmjs.com/package/opencode-ai"><img alt="npm" src="https://img.shields.io/npm/v/opencode-ai?style=flat-square" /></a>
-  <a href="https://github.com/anomalyco/opencode/actions/workflows/publish.yml"><img alt="Build status" src="https://img.shields.io/github/actions/workflow/status/anomalyco/opencode/publish.yml?style=flat-square&branch=dev" /></a>
+  <a href="https://arduinox.ai/discord"><img alt="Discord" src="https://img.shields.io/discord/1391832426048651334?style=flat-square&label=discord" /></a>
+  <a href="https://www.npmjs.com/package/arduinox-ai"><img alt="npm" src="https://img.shields.io/npm/v/arduinox-ai?style=flat-square" /></a>
+  <a href="https://github.com/KunalGhadge/arduinox/actions/workflows/publish.yml"><img alt="Build status" src="https://img.shields.io/github/actions/workflow/status/KunalGhadge/arduinox/publish.yml?style=flat-square&branch=dev" /></a>
 </p>
 
 <p align="center">
@@ -27,6 +27,7 @@
   <a href="README.ja.md">日本語</a> |
   <a href="README.pl.md">Polski</a> |
   <a href="README.ru.md">Русский</a> |
+  <a href="README.bs.md">Bosanski</a> |
   <a href="README.ar.md">العربية</a> |
   <a href="README.no.md">Norsk</a> |
   <a href="README.br.md">Português (Brasil)</a> |
@@ -37,103 +38,111 @@
   <a href="README.gr.md">Ελληνικά</a>
 </p>
 
-[![OpenCode Terminal UI](packages/web/src/assets/lander/screenshot.png)](https://opencode.ai)
+---
+
+## ⚡ 혁명: AI와 물리적 하드웨어의 만남
+
+과거에는 임베디드 개발을 위해 데이터 시트를 수동으로 검색하고, 복잡한 핀 매핑과 지루한 디버깅이 필요했습니다. **ArduinoX가 이를 바꿉니다.** 고수준 AI 추론과 저수준 물리적 실행 사이의 간극을 메움으로써 하드웨어 구축 방식을 혁신했습니다.
+
+- **하드웨어 인식 지능**: 단순한 범용 LLM이 아닙니다. ArduinoX는 회로도, 센서 레지스트리 및 주변 장치 추상화를 이해합니다.
+- **물리적 "폐쇄 루프" 실행**: ArduinoX는 단순히 코드를 작성하는 데 그치지 않습니다. 실시간으로 빌드 및 업로드를 수행하고 시리얼 출력을 모니터링하여 버그를 즉시 수정합니다.
+- **에이전트 중심의 문제 해결**: *"DHT11과 LCD를 사용해 기상 관측소를 만들어 줘"* 라고 말하면 회로 계획, C++ 작성, 빌드 검증까지 수행합니다.
 
 ---
 
-### 설치
+## 🆚 ArduinoX vs. 기존 Arduino IDE
 
-```bash
-# YOLO
-curl -fsSL https://opencode.ai/install | bash
-
-# 패키지 매니저
-npm i -g opencode-ai@latest        # bun/pnpm/yarn 도 가능
-scoop install opencode             # Windows
-choco install opencode             # Windows
-brew install anomalyco/tap/opencode # macOS 및 Linux (권장, 항상 최신)
-brew install opencode              # macOS 및 Linux (공식 brew formula, 업데이트 빈도 낮음)
-sudo pacman -S opencode            # Arch Linux (Stable)
-paru -S opencode-bin               # Arch Linux (Latest from AUR)
-mise use -g opencode               # 어떤 OS든
-nix run nixpkgs#opencode           # 또는 github:anomalyco/opencode 로 최신 dev 브랜치
-```
-
-> [!TIP]
-> 설치 전에 0.1.x 보다 오래된 버전을 제거하세요.
-
-### 데스크톱 앱 (BETA)
-
-OpenCode 는 데스크톱 앱으로도 제공됩니다. [releases page](https://github.com/anomalyco/opencode/releases) 에서 직접 다운로드하거나 [opencode.ai/download](https://opencode.ai/download) 를 이용하세요.
-
-| 플랫폼                | 다운로드                              |
-| --------------------- | ------------------------------------- |
-| macOS (Apple Silicon) | `opencode-desktop-darwin-aarch64.dmg` |
-| macOS (Intel)         | `opencode-desktop-darwin-x64.dmg`     |
-| Windows               | `opencode-desktop-windows-x64.exe`    |
-| Linux                 | `.deb`, `.rpm`, 또는 AppImage         |
-
-```bash
-# macOS (Homebrew)
-brew install --cask opencode-desktop
-# Windows (Scoop)
-scoop bucket add extras; scoop install extras/opencode-desktop
-```
-
-#### 설치 디렉터리
-
-설치 스크립트는 설치 경로를 다음 우선순위로 결정합니다.
-
-1. `$OPENCODE_INSTALL_DIR` - 사용자 지정 설치 디렉터리
-2. `$XDG_BIN_DIR` - XDG Base Directory Specification 준수 경로
-3. `$HOME/bin` - 표준 사용자 바이너리 디렉터리 (존재하거나 생성 가능할 경우)
-4. `$HOME/.opencode/bin` - 기본 폴백
-
-```bash
-# 예시
-OPENCODE_INSTALL_DIR=/usr/local/bin curl -fsSL https://opencode.ai/install | bash
-XDG_BIN_DIR=$HOME/.local/bin curl -fsSL https://opencode.ai/install | bash
-```
-
-### Agents
-
-OpenCode 에는 내장 에이전트 2개가 있으며 `Tab` 키로 전환할 수 있습니다.
-
-- **build** - 기본값, 개발 작업을 위한 전체 권한 에이전트
-- **plan** - 분석 및 코드 탐색을 위한 읽기 전용 에이전트
-  - 기본적으로 파일 편집을 거부
-  - bash 명령 실행 전에 권한을 요청
-  - 낯선 코드베이스를 탐색하거나 변경을 계획할 때 적합
-
-또한 복잡한 검색과 여러 단계 작업을 위한 **general** 서브 에이전트가 포함되어 있습니다.
-내부적으로 사용되며, 메시지에서 `@general` 로 호출할 수 있습니다.
-
-[agents](https://opencode.ai/docs/agents) 에 대해 더 알아보세요.
-
-### 문서
-
-OpenCode 설정에 대한 자세한 내용은 [**문서**](https://opencode.ai/docs) 를 참고하세요.
-
-### 기여하기
-
-OpenCode 에 기여하고 싶다면, Pull Request 를 제출하기 전에 [contributing docs](./CONTRIBUTING.md) 를 읽어주세요.
-
-### OpenCode 기반으로 만들기
-
-OpenCode 와 관련된 프로젝트를 진행하면서 이름에 "opencode"(예: "opencode-dashboard" 또는 "opencode-mobile") 를 포함한다면, README 에 해당 프로젝트가 OpenCode 팀이 만든 것이 아니며 어떤 방식으로도 우리와 제휴되어 있지 않다는 점을 명시해 주세요.
-
-### FAQ
-
-#### Claude Code 와는 무엇이 다른가요?
-
-기능 면에서는 Claude Code 와 매우 유사합니다. 주요 차이점은 다음과 같습니다.
-
-- 100% 오픈 소스
-- 특정 제공자에 묶여 있지 않습니다. [OpenCode Zen](https://opencode.ai/zen) 을 통해 제공하는 모델을 권장하지만, OpenCode 는 Claude, OpenAI, Google 또는 로컬 모델과도 사용할 수 있습니다. 모델이 발전하면서 격차는 줄고 가격은 내려가므로 provider-agnostic 인 것이 중요합니다.
-- 기본으로 제공되는 LSP 지원
-- TUI 에 집중. OpenCode 는 neovim 사용자와 [terminal.shop](https://terminal.shop) 제작자가 만들었으며, 터미널에서 가능한 것의 한계를 밀어붙입니다.
-- 클라이언트/서버 아키텍처. 예를 들어 OpenCode 를 내 컴퓨터에서 실행하면서 모바일 앱으로 원격 조작할 수 있습니다. 즉, TUI 프런트엔드는 가능한 여러 클라이언트 중 하나일 뿐입니다.
+| 기능 | 기존 IDE | ArduinoX |
+| :--- | :--- | :--- |
+| **코드 생성** | 수동 / 정적 스니펫 | **동적인 AI 페어 프로그래밍** |
+| **설정** | 수동 설치 프로그램 및 드라이버 | **제로 설정 (포터블 CLI 내장)** |
+| **디버깅** | 수동 시리얼 모니터링 | **AI 기반 자동 디버깅** |
+| **인터페이스** | 기본 GUI | **프리미엄, 고성능 TUI** |
+| **지능** | 없음 | **에이전틱 (빌드, 계획, 연구)** |
 
 ---
 
-**커뮤니티에 참여하기** [Discord](https://discord.gg/opencode) | [X.com](https://x.com/opencode)
+## 📥 설치 (사용자용)
+
+ArduinoX는 **포터블하며 종속성이 없도록** 설계되었습니다.
+
+### **Windows (한 줄 설치)**
+PowerShell을 열고 다음 명령을 실행합니다:
+```powershell
+powershell -ExecutionPolicy ByPass -c "irm https://raw.githubusercontent.com/KunalGhadge/arduinox/main/install.ps1 | iex"
+```
+
+### **macOS / Linux (한 줄 설치)**
+터미널을 열고 다음 명령을 실행합니다:
+```bash
+curl -fsSL https://raw.githubusercontent.com/KunalGhadge/arduinox/main/install | bash
+```
+
+---
+
+## 🛠️ 기본 사용법
+
+### 주요 명령
+
+| 명령 | 설명 |
+| :--- | :--- |
+| `arduinox run` | 대화형 AI TUI 시작 (주요 명령) |
+| `arduinox auth login` | ArduinoX Cloud 계정에 안전하게 로그인 |
+| `arduinox models list` | GPT-4, Claude, Gemini 표시 및 전환 |
+| `arduinox --version` | 현재 버전 확인 |
+
+### Arduino 관련 명령
+TUI 또는 CLI 내에서 특수한 하드웨어 제어 명령을 사용할 수 있습니다:
+
+- **보드 감지**: `arduinox board list`
+- **라이브러리 관리**: `arduinox lib install <이름>`
+- **원클릭 업로드**: `arduinox upload --board <fqbn>`
+
+---
+
+## 👨‍💻 빌드 및 기여 (개발자용)
+
+기여를 환영합니다! ArduinoX는 **Bun**과 **TypeScript**로 구축된 고성능 모노레포입니다.
+
+### 🛠️ 개발자용 설정
+[Bun](https://bun.sh)이 설치되어 있는지 확인하세요.
+
+1. **저장소 클론**
+   ```bash
+   git clone https://github.com/KunalGhadge/arduinox.git
+   cd arduinox
+   ```
+
+2. **종속성 설치**
+   ```bash
+   bun install
+   ```
+
+3. **개발 모드로 실행**
+   ```bash
+   bun run dev
+   ```
+
+### 🛡️ 기여 가이드라인 (안정성 최우선)
+수천 명의 사용자에게 안정적인 서비스를 제공하기 위해:
+- **메인 브런체 직접 푸시 금지**: 항상 Pull Request를 사용하세요.
+- **타입 안전성 확인**: 커밋 전 `bun run typecheck`를 실행하세요.
+- **브랜드 정체성**: 사용자용 텍스트에서 'ArduinoX' 브랜드를 유지하세요.
+- **UI 보존**: Discord 논의 없이 CSS나 TUI 레이아웃을 변경하지 마세요.
+
+---
+
+## 🤝 기여자
+
+*첫 번째 커뮤니티 기여자를 찾고 있습니다! 첫 PR을 보내고 여기에 이름을 올려보세요.*
+
+---
+
+## 📣 커뮤니티 및 지원
+
+- [Discord](https://arduinox.ai/discord)
+- [X (Twitter)](https://x.com/arduinox)
+- [공식 문서](https://arduinox.ai/docs)
+
+---
+<p align="center">하드웨어 커뮤니티를 위해 ❤️로 제작되었습니다.</p>

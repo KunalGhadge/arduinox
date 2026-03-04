@@ -84,13 +84,13 @@ import { useTuiConfig } from "../../context/tui-config"
 addDefaultParsers(parsers.parsers)
 
 class CustomSpeedScroll implements ScrollAcceleration {
-  constructor(private speed: number) {}
+  constructor(private speed: number) { }
 
   tick(_now?: number): number {
     return this.speed
   }
 
-  reset(): void {}
+  reset(): void { }
 }
 
 const context = createContext<{
@@ -494,7 +494,7 @@ export function Session() {
       },
       onSelect: async (dialog) => {
         const status = sync.data.session_status?.[route.sessionID]
-        if (status?.type !== "idle") await sdk.client.session.abort({ sessionID: route.sessionID }).catch(() => {})
+        if (status?.type !== "idle") await sdk.client.session.abort({ sessionID: route.sessionID }).catch(() => { })
         const revert = session()?.revert?.messageID
         const message = messages().findLast((x) => (!revert || x.id < revert) && x.role === "user")
         if (!message) return
@@ -956,6 +956,161 @@ export function Session() {
         moveChild(-1)
         dialog.clear()
       }),
+    },
+    // ═══ ArduinoX Commands ═══
+    {
+      title: "ArduinoX: Board Status",
+      value: "arduinox.status",
+      category: "ArduinoX",
+      slash: {
+        name: "status",
+        aliases: ["board-status"],
+      },
+      onSelect: (dialog) => {
+        prompt.set({ input: "Show the ArduinoX board and project status using the arduino_status tool.", parts: [] })
+        dialog.clear()
+      },
+    },
+    {
+      title: "ArduinoX: Detect Boards",
+      value: "arduinox.boards",
+      category: "ArduinoX",
+      slash: {
+        name: "boards",
+        aliases: ["detect"],
+      },
+      onSelect: (dialog) => {
+        prompt.set({ input: "Scan for connected Arduino boards using the arduino_board tool.", parts: [] })
+        dialog.clear()
+      },
+    },
+    {
+      title: "ArduinoX: Compile Sketch",
+      value: "arduinox.compile",
+      category: "ArduinoX",
+      slash: {
+        name: "compile",
+        aliases: ["verify"],
+      },
+      onSelect: (dialog) => {
+        prompt.set({ input: "Compile the current Arduino sketch using the arduino_compile tool to verify it builds correctly.", parts: [] })
+        dialog.clear()
+      },
+    },
+    {
+      title: "ArduinoX: Upload to Board",
+      value: "arduinox.upload",
+      category: "ArduinoX",
+      slash: {
+        name: "upload",
+        aliases: ["flash"],
+      },
+      onSelect: (dialog) => {
+        prompt.set({ input: "Upload the compiled sketch to the connected Arduino board using the arduino_upload tool.", parts: [] })
+        dialog.clear()
+      },
+    },
+    {
+      title: "ArduinoX: Serial Monitor",
+      value: "arduinox.monitor",
+      category: "ArduinoX",
+      slash: {
+        name: "monitor",
+        aliases: ["serial"],
+      },
+      onSelect: (dialog) => {
+        prompt.set({ input: "Open the serial monitor for the connected board using the arduino_monitor tool to read Serial output.", parts: [] })
+        dialog.clear()
+      },
+    },
+    {
+      title: "ArduinoX: Search Parts",
+      value: "arduinox.parts",
+      category: "ArduinoX",
+      slash: {
+        name: "parts",
+        aliases: ["components"],
+      },
+      onSelect: (dialog) => {
+        prompt.set({ input: "Search the ArduinoX hardware parts registry using the part_search tool.", parts: [] })
+        dialog.clear()
+      },
+    },
+    {
+      title: "ArduinoX: Install Library",
+      value: "arduinox.lib.install",
+      category: "ArduinoX",
+      slash: {
+        name: "install-lib",
+        aliases: ["lib-install"],
+      },
+      onSelect: (dialog) => {
+        prompt.set({ input: "Install a required Arduino library using the arduino_lib_install tool.", parts: [] })
+        dialog.clear()
+      },
+    },
+    {
+      title: "ArduinoX: Search Libraries",
+      value: "arduinox.lib.search",
+      category: "ArduinoX",
+      slash: {
+        name: "lib-search",
+        aliases: ["search-lib"],
+      },
+      onSelect: (dialog) => {
+        prompt.set({ input: "Search for available Arduino libraries using the arduino_lib_search tool.", parts: [] })
+        dialog.clear()
+      },
+    },
+    {
+      title: "ArduinoX: Install Board Core",
+      value: "arduinox.core.install",
+      category: "ArduinoX",
+      slash: {
+        name: "core-install",
+        aliases: ["install-core"],
+      },
+      onSelect: (dialog) => {
+        prompt.set({ input: "Install board platform support (e.g. ESP32, STM32) using the arduino_core_install tool.", parts: [] })
+        dialog.clear()
+      },
+    },
+    {
+      title: "ArduinoX: Mode - Manual",
+      value: "arduinox.mode.manual",
+      category: "ArduinoX",
+      slash: {
+        name: "manual",
+      },
+      onSelect: (dialog) => {
+        prompt.set({ input: "Switch ArduinoX to Manual mode (I'll handle /compile and /upload myself).", parts: [] })
+        dialog.clear()
+      },
+    },
+    {
+      title: "ArduinoX: Mode - Ask",
+      value: "arduinox.mode.ask",
+      category: "ArduinoX",
+      slash: {
+        name: "ask",
+      },
+      onSelect: (dialog) => {
+        prompt.set({ input: "Switch ArduinoX to Ask mode (Ask me before every hardware action).", parts: [] })
+        dialog.clear()
+      },
+    },
+    {
+      title: "ArduinoX: Mode - Automatic",
+      value: "arduinox.mode.automatic",
+      category: "ArduinoX",
+      slash: {
+        name: "automatic",
+        aliases: ["auto"],
+      },
+      onSelect: (dialog) => {
+        prompt.set({ input: "Switch ArduinoX to Automatic mode (Handle detect, compile, and upload automatically).", parts: [] })
+        dialog.clear()
+      },
     },
   ])
 

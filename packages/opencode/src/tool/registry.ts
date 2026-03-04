@@ -12,6 +12,18 @@ import { WebFetchTool } from "./webfetch"
 import { WriteTool } from "./write"
 import { InvalidTool } from "./invalid"
 import { SkillTool } from "./skill"
+import { ArduinoBoardTool } from "./arduino_board"
+import { ArduinoCompileTool } from "./arduino_compile"
+import { ArduinoUploadTool } from "./arduino_upload"
+import { ArduinoStatusTool } from "./arduino_status"
+import { ArduinoLibInstallTool } from "./arduino_lib_install"
+import { ArduinoLibSearchTool } from "./arduino_lib_search"
+import { ArduinoMonitorTool } from "./arduino_monitor"
+import { ArduinoCoreInstallTool } from "./arduino_core_install"
+import { ArduinoSketchNewTool } from "./arduino_sketch_new"
+import { PartSearchTool } from "./part_search"
+import { PartSelectTool } from "./part_select"
+import { ArduinoSkillInstallTool } from "./arduino_skill_install"
 import type { Agent } from "../agent/agent"
 import { Tool } from "./tool"
 import { Instance } from "../project/instance"
@@ -117,6 +129,18 @@ export namespace ToolRegistry {
       CodeSearchTool,
       SkillTool,
       ApplyPatchTool,
+      ArduinoBoardTool,
+      ArduinoCompileTool,
+      ArduinoUploadTool,
+      ArduinoStatusTool,
+      ArduinoLibInstallTool,
+      ArduinoLibSearchTool,
+      ArduinoMonitorTool,
+      ArduinoCoreInstallTool,
+      ArduinoSketchNewTool,
+      PartSearchTool,
+      PartSelectTool,
+      ArduinoSkillInstallTool,
       ...(Flag.OPENCODE_EXPERIMENTAL_LSP_TOOL ? [LspTool] : []),
       ...(config.experimental?.batch_tool === true ? [BatchTool] : []),
       ...(Flag.OPENCODE_EXPERIMENTAL_PLAN_MODE && Flag.OPENCODE_CLIENT === "cli" ? [PlanExitTool] : []),

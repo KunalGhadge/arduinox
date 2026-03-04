@@ -1,0 +1,56 @@
+{
+    "id": "arduino_uno_r3",
+    "name": "Arduino Uno R3",
+    "type": "base_board",
+    "fqbn": "arduino:avr:uno",
+    "operating_voltage": "5V",
+    "digital_pins": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13
+    ],
+    "analog_pins": [
+        "A0",
+        "A1",
+        "A2",
+        "A3",
+        "A4",
+        "A5"
+    ],
+    "pwm_pins": [
+        3,
+        5,
+        6,
+        9,
+        10,
+        11
+    ],
+    "communication": {
+        "i2c": {
+            "sda": "A4",
+            "scl": "A5"
+        },
+        "spi": {
+            "ss": 10,
+            "mosi": 11,
+            "miso": 12,
+            "sck": 13
+        },
+        "serial": {
+            "rx": 0,
+            "tx": 1
+        }
+    },
+    "description": "The classic Arduino Uno. 5V logic."
+}

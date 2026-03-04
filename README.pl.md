@@ -1,17 +1,17 @@
 <p align="center">
-  <a href="https://opencode.ai">
+  <a href="https://arduinox.ai">
     <picture>
       <source srcset="packages/console/app/src/asset/logo-ornate-dark.svg" media="(prefers-color-scheme: dark)">
       <source srcset="packages/console/app/src/asset/logo-ornate-light.svg" media="(prefers-color-scheme: light)">
-      <img src="packages/console/app/src/asset/logo-ornate-light.svg" alt="OpenCode logo">
+      <img src="packages/console/app/src/asset/logo-ornate-light.svg" alt="ArduinoX logo">
     </picture>
   </a>
 </p>
-<p align="center">Otwartoźródłowy agent kodujący AI.</p>
+<p align="center">The world's first agentic AI coding assistant specifically engineered for **Arduino and hardware development**.</p>
 <p align="center">
-  <a href="https://opencode.ai/discord"><img alt="Discord" src="https://img.shields.io/discord/1391832426048651334?style=flat-square&label=discord" /></a>
-  <a href="https://www.npmjs.com/package/opencode-ai"><img alt="npm" src="https://img.shields.io/npm/v/opencode-ai?style=flat-square" /></a>
-  <a href="https://github.com/anomalyco/opencode/actions/workflows/publish.yml"><img alt="Build status" src="https://img.shields.io/github/actions/workflow/status/anomalyco/opencode/publish.yml?style=flat-square&branch=dev" /></a>
+  <a href="https://arduinox.ai/discord"><img alt="Discord" src="https://img.shields.io/discord/1391832426048651334?style=flat-square&label=discord" /></a>
+  <a href="https://www.npmjs.com/package/arduinox-ai"><img alt="npm" src="https://img.shields.io/npm/v/arduinox-ai?style=flat-square" /></a>
+  <a href="https://github.com/KunalGhadge/arduinox/actions/workflows/publish.yml"><img alt="Build status" src="https://img.shields.io/github/actions/workflow/status/KunalGhadge/arduinox/publish.yml?style=flat-square&branch=dev" /></a>
 </p>
 
 <p align="center">
@@ -27,6 +27,7 @@
   <a href="README.ja.md">日本語</a> |
   <a href="README.pl.md">Polski</a> |
   <a href="README.ru.md">Русский</a> |
+  <a href="README.bs.md">Bosanski</a> |
   <a href="README.ar.md">العربية</a> |
   <a href="README.no.md">Norsk</a> |
   <a href="README.br.md">Português (Brasil)</a> |
@@ -37,103 +38,111 @@
   <a href="README.gr.md">Ελληνικά</a>
 </p>
 
-[![OpenCode Terminal UI](packages/web/src/assets/lander/screenshot.png)](https://opencode.ai)
+---
+
+## ⚡ The Revolution: AI Meets Physical Hardware
+
+In the past, embedded development required manual data sheet diving, complex pin mapping, and tedious debugging. **ArduinoX changes the game.** By bridging high-level AI reasoning with low-level physical execution, we've transformed how hardware is built.
+
+- **Hardware-Aware Intelligence**: Not just a generic LLM. ArduinoX understands circuit diagrams, sensor registries, and peripheral abstractions.
+- **Physical "Closed-Loop" Execution**: ArduinoX doesn't just write code; it can compile, upload, and monitor serial output to fix bugs in real-time.
+- **Agentic Problem Solving**: Tell it *"Build me a weather station with a DHT11 and an LCD,"* and it will plan the circuit, write the C++, and verify the build.
 
 ---
 
-### Instalacja
+## 🆚 ArduinoX vs. Traditional Arduino IDE
 
-```bash
-# YOLO
-curl -fsSL https://opencode.ai/install | bash
-
-# Menedżery pakietów
-npm i -g opencode-ai@latest        # albo bun/pnpm/yarn
-scoop install opencode             # Windows
-choco install opencode             # Windows
-brew install anomalyco/tap/opencode # macOS i Linux (polecane, zawsze aktualne)
-brew install opencode              # macOS i Linux (oficjalna formuła brew, rzadziej aktualizowana)
-sudo pacman -S opencode            # Arch Linux (Stable)
-paru -S opencode-bin               # Arch Linux (Latest from AUR)
-mise use -g opencode               # dowolny system
-nix run nixpkgs#opencode           # lub github:anomalyco/opencode dla najnowszej gałęzi dev
-```
-
-> [!TIP]
-> Przed instalacją usuń wersje starsze niż 0.1.x.
-
-### Aplikacja desktopowa (BETA)
-
-OpenCode jest także dostępny jako aplikacja desktopowa. Pobierz ją bezpośrednio ze strony [releases](https://github.com/anomalyco/opencode/releases) lub z [opencode.ai/download](https://opencode.ai/download).
-
-| Platforma             | Pobieranie                            |
-| --------------------- | ------------------------------------- |
-| macOS (Apple Silicon) | `opencode-desktop-darwin-aarch64.dmg` |
-| macOS (Intel)         | `opencode-desktop-darwin-x64.dmg`     |
-| Windows               | `opencode-desktop-windows-x64.exe`    |
-| Linux                 | `.deb`, `.rpm` lub AppImage           |
-
-```bash
-# macOS (Homebrew)
-brew install --cask opencode-desktop
-# Windows (Scoop)
-scoop bucket add extras; scoop install extras/opencode-desktop
-```
-
-#### Katalog instalacji
-
-Skrypt instalacyjny stosuje następujący priorytet wyboru ścieżki instalacji:
-
-1. `$OPENCODE_INSTALL_DIR` - Własny katalog instalacji
-2. `$XDG_BIN_DIR` - Ścieżka zgodna ze specyfikacją XDG Base Directory
-3. `$HOME/bin` - Standardowy katalog binarny użytkownika (jeśli istnieje lub można go utworzyć)
-4. `$HOME/.opencode/bin` - Domyślny fallback
-
-```bash
-# Przykłady
-OPENCODE_INSTALL_DIR=/usr/local/bin curl -fsSL https://opencode.ai/install | bash
-XDG_BIN_DIR=$HOME/.local/bin curl -fsSL https://opencode.ai/install | bash
-```
-
-### Agents
-
-OpenCode zawiera dwóch wbudowanych agentów, między którymi możesz przełączać się klawiszem `Tab`.
-
-- **build** - Domyślny agent z pełnym dostępem do pracy developerskiej
-- **plan** - Agent tylko do odczytu do analizy i eksploracji kodu
-  - Domyślnie odmawia edycji plików
-  - Pyta o zgodę przed uruchomieniem komend bash
-  - Idealny do poznawania nieznanych baz kodu lub planowania zmian
-
-Dodatkowo jest subagent **general** do złożonych wyszukiwań i wieloetapowych zadań.
-Jest używany wewnętrznie i można go wywołać w wiadomościach przez `@general`.
-
-Dowiedz się więcej o [agents](https://opencode.ai/docs/agents).
-
-### Dokumentacja
-
-Więcej informacji o konfiguracji OpenCode znajdziesz w [**dokumentacji**](https://opencode.ai/docs).
-
-### Współtworzenie
-
-Jeśli chcesz współtworzyć OpenCode, przeczytaj [contributing docs](./CONTRIBUTING.md) przed wysłaniem pull requesta.
-
-### Budowanie na OpenCode
-
-Jeśli pracujesz nad projektem związanym z OpenCode i używasz "opencode" jako części nazwy (na przykład "opencode-dashboard" lub "opencode-mobile"), dodaj proszę notatkę do swojego README, aby wyjaśnić, że projekt nie jest tworzony przez zespół OpenCode i nie jest z nami w żaden sposób powiązany.
-
-### FAQ
-
-#### Czym to się różni od Claude Code?
-
-Jest bardzo podobne do Claude Code pod względem możliwości. Oto kluczowe różnice:
-
-- 100% open source
-- Niezależne od dostawcy. Chociaż polecamy modele oferowane przez [OpenCode Zen](https://opencode.ai/zen); OpenCode może być używany z Claude, OpenAI, Google, a nawet z modelami lokalnymi. W miarę jak modele ewoluują, różnice będą się zmniejszać, a ceny spadać, więc ważna jest niezależność od dostawcy.
-- Wbudowane wsparcie LSP
-- Skupienie na TUI. OpenCode jest budowany przez użytkowników neovim i twórców [terminal.shop](https://terminal.shop); przesuwamy granice tego, co jest możliwe w terminalu.
-- Architektura klient/serwer. Pozwala np. uruchomić OpenCode na twoim komputerze, a sterować nim zdalnie z aplikacji mobilnej. To znaczy, że frontend TUI jest tylko jednym z możliwych klientów.
+| Feature | Traditional IDE | ArduinoX |
+| :--- | :--- | :--- |
+| **Code Generation** | Manual / Static Snippets | **Dynamic AI Pair Programming** |
+| **Setup** | Manual Installer & Drivers | **Zero-Setup (Portable CLI Bundled)** |
+| **Debugging** | Manual Serial Monitoring | **AI-Powered Auto-Debugging** |
+| **Interface** | Basic GUI | **Premium, High-Performance TUI** |
+| **Intelligence** | None | **Agentic (Build, Plan, Research)** |
 
 ---
 
-**Dołącz do naszej społeczności** [Discord](https://discord.gg/opencode) | [X.com](https://x.com/opencode)
+## 📥 Installation (For Users)
+
+ArduinoX is designed to be **portable and dependency-free**. 
+
+### **Windows (One-Liner)**
+Open PowerShell and run:
+```powershell
+powershell -ExecutionPolicy ByPass -c "irm https://raw.githubusercontent.com/KunalGhadge/arduinox/main/install.ps1 | iex"
+```
+
+### **macOS / Linux (One-Liner)**
+Open Terminal and run:
+```bash
+curl -fsSL https://raw.githubusercontent.com/KunalGhadge/arduinox/main/install | bash
+```
+
+---
+
+## 🛠️ Basic Usage
+
+### Common Commands
+
+| Command | Description |
+| :--- | :--- |
+| `arduinox run` | Start the interactive AI TUI (Primary Command) |
+| `arduinox auth login` | Securely log in to your ArduinoX Cloud account |
+| `arduinox models list` | View and switch between GPT-4, Claude, and Gemini |
+| `arduinox --version` | Check your current version |
+
+### Arduino Specific Operations
+Within the TUI or CLI, you can use specialized hardware triggers:
+
+- **Board Detection**: `arduinox board list`
+- **Library Management**: `arduinox lib install <name>`
+- **One-Click Upload**: `arduinox upload --board <fqbn>`
+
+---
+
+## 👨‍💻 Build & Contribute (For Developers)
+
+We welcome contributors! ArduinoX is a high-performance monorepo built with **Bun** and **TypeScript**.
+
+### 🛠️ Developer Setup
+Ensure you have [Bun](https://bun.sh) installed.
+
+1. **Clone the Repo**
+   ```bash
+   git clone https://github.com/KunalGhadge/arduinox.git
+   cd arduinox
+   ```
+
+2. **Install Dependencies**
+   ```bash
+   bun install
+   ```
+
+3. **Run in Development Mode**
+   ```bash
+   bun run dev
+   ```
+
+### 🛡️ Contribution Guidelines (Stability First)
+To keep the application stable for thousands of users:
+- **No Direct Master Pushes**: Always use Pull Requests.
+- **Type Safety**: Run `bun run typecheck` before committing.
+- **Brand Integrity**: Maintain the "ArduinoX" branding in all user-facing strings.
+- **UI Preservation**: Do not modify CSS or TUI layout without prior discussion in Discord.
+
+---
+
+## 🤝 Contributors
+
+*We are looking for our first community contributors! Submit your first PR to see your name here.*
+
+---
+
+## 📣 Community & Support
+
+- [Discord](https://arduinox.ai/discord)
+- [X (Twitter)](https://x.com/arduinox)
+- [Documentation](https://arduinox.ai/docs)
+
+---
+<p align="center">Built with ❤️ for the Hardware Community.</p>

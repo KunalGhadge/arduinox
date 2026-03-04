@@ -1,0 +1,9 @@
+{
+    "id": "mini_breadboard_170",
+    "name": "Mini Breadboard (170 Tie-Points)",
+    "type": "prototyping",
+    "operating_voltage": "N/A",
+    "pins": {},
+    "libraries_required": [],
+    "description": "Small solderless breadboard with 17 rows of 5 interconnected sockets on each side of the center groove."
+}

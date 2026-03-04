@@ -13,6 +13,9 @@ import PROMPT_COMPACTION from "./prompt/compaction.txt"
 import PROMPT_EXPLORE from "./prompt/explore.txt"
 import PROMPT_SUMMARY from "./prompt/summary.txt"
 import PROMPT_TITLE from "./prompt/title.txt"
+import PROMPT_ARDUINOX_PLAN from "./prompt/arduinox-plan.txt"
+import PROMPT_ARDUINOX_BUILD from "./prompt/arduinox-build.txt"
+import PROMPT_ARDUINOX_CHAT from "./prompt/arduinox-chat.txt"
 import { PermissionNext } from "@/permission/next"
 import { mergeDeep, pipe, sortBy, values } from "remeda"
 import { Global } from "@/global"
@@ -74,30 +77,23 @@ export namespace Agent {
     const user = PermissionNext.fromConfig(cfg.permission ?? {})
 
     const result: Record<string, Info> = {
-      build: {
-        name: "build",
-        description: "The default agent. Executes tools based on configured permissions.",
-        options: {},
-        permission: PermissionNext.merge(
-          defaults,
-          PermissionNext.fromConfig({
-            question: "allow",
-            plan_enter: "allow",
-          }),
-          user,
-        ),
-        mode: "primary",
-        native: true,
-      },
       plan: {
         name: "plan",
-        description: "Plan mode. Disallows all edit tools.",
+        description: "The ArduinoX Systems Architect. Selects hardware parts, designs wiring plans, and validates IoT constraints.",
         options: {},
+        prompt: PROMPT_ARDUINOX_PLAN,
         permission: PermissionNext.merge(
           defaults,
           PermissionNext.fromConfig({
             question: "allow",
             plan_exit: "allow",
+            part_search: "allow",
+            part_select: "allow",
+            arduino_board: "allow",
+            arduino_status: "allow",
+            arduino_lib_search: "allow",
+            arduino_core_install: "allow",
+            arduino_skill_install: "allow",
             external_directory: {
               [path.join(Global.Path.data, "plans", "*")]: "allow",
             },
@@ -106,6 +102,55 @@ export namespace Agent {
               [path.join(".opencode", "plans", "*.md")]: "allow",
               [path.relative(Instance.worktree, path.join(Global.Path.data, path.join("plans", "*.md")))]: "allow",
             },
+          }),
+          user,
+        ),
+        mode: "primary",
+        native: true,
+      },
+      build: {
+        name: "build",
+        description: "The ArduinoX Firmware Engineer. Writes embedded C++ code and verifies it with arduino-cli tools.",
+        options: {},
+        prompt: PROMPT_ARDUINOX_BUILD,
+        permission: PermissionNext.merge(
+          defaults,
+          PermissionNext.fromConfig({
+            question: "allow",
+            plan_enter: "allow",
+            arduino_board: "allow",
+            arduino_compile: "allow",
+            arduino_upload: "allow",
+            arduino_status: "allow",
+            arduino_lib_install: "allow",
+            arduino_lib_search: "allow",
+            arduino_monitor: "allow",
+            arduino_core_install: "allow",
+            arduino_sketch_new: "allow",
+            arduino_skill_install: "allow",
+          }),
+          user,
+        ),
+        mode: "primary",
+        native: true,
+      },
+      chat: {
+        name: "chat",
+        description: "The ArduinoX Assistant. Expert in technical documentation, library APIs, and hardware datasheets. Use this for general questions.",
+        options: {},
+        prompt: PROMPT_ARDUINOX_CHAT,
+        permission: PermissionNext.merge(
+          defaults,
+          PermissionNext.fromConfig({
+            question: "allow",
+            arduino_lib_search: "allow",
+            websearch: "allow",
+            webfetch: "allow",
+            grep: "allow",
+            glob: "allow",
+            list: "allow",
+            read: "allow",
+            arduino_skill_install: "allow",
           }),
           user,
         ),
@@ -259,7 +304,7 @@ export namespace Agent {
     return pipe(
       await state(),
       values(),
-      sortBy([(x) => (cfg.default_agent ? x.name === cfg.default_agent : x.name === "build"), "desc"]),
+      sortBy([(x) => (cfg.default_agent ? x.name === cfg.default_agent : x.name === "chat"), "desc"]),
     )
   }
 
@@ -325,7 +370,7 @@ export namespace Agent {
           instructions: SystemPrompt.instructions(),
           store: false,
         }),
-        onError: () => {},
+        onError: () => { },
       })
       for await (const part of result.fullStream) {
         if (part.type === "error") throw part.error

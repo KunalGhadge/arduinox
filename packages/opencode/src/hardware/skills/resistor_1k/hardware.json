@@ -1,0 +1,12 @@
+{
+    "id": "resistor_1k",
+    "name": "1k Ohm Resistor",
+    "type": "passive",
+    "operating_voltage": "N/A",
+    "pins": {
+        "pin1": "Terminal 1",
+        "pin2": "Terminal 2"
+    },
+    "libraries_required": [],
+    "description": "A 1000 ohm resistor, common for pull-ups and current limiting."
+}
