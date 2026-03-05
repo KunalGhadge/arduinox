@@ -78,7 +78,7 @@ Open Terminal and run:
 curl -fsSL https://raw.githubusercontent.com/KunalGhadge/arduinox/main/install | bash
 ```
 
---- <s>
+--- </s>
 
 ## 🛠️ Basic Usage
 
