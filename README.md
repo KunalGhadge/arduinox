@@ -62,7 +62,7 @@ In the past, embedded development required manual data sheet diving, complex pin
 
 ---
 
-~~## 📥 Installation (For Users)
+<s>## 📥 Installation (For Users)
 
 ArduinoX is designed to be **portable and dependency-free**. 
 
@@ -78,7 +78,7 @@ Open Terminal and run:
 curl -fsSL https://raw.githubusercontent.com/KunalGhadge/arduinox/main/install | bash
 ```
 
---- ~~
+--- <s>
 
 ## 🛠️ Basic Usage
 
