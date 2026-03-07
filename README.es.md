@@ -7,11 +7,12 @@
     </picture>
   </a>
 </p>
-<p align="center">El primer asistente de codificación de IA agentic del mundo diseñado específicamente para **Arduino y el desarrollo de hardware**.</p>
+<p align="center">The open-source agentic AI coding assistant built for <strong>Arduino & hardware development</strong>.</p>
 <p align="center">
+  <a href="https://github.com/KunalGhadge/arduinox/releases"><img alt="Download" src="https://img.shields.io/github/v/release/KunalGhadge/arduinox?style=flat-square&label=download" /></a>
   <a href="https://arduinox.ai/discord"><img alt="Discord" src="https://img.shields.io/discord/1391832426048651334?style=flat-square&label=discord" /></a>
-  <a href="https://www.npmjs.com/package/arduinox-ai"><img alt="npm" src="https://img.shields.io/npm/v/arduinox-ai?style=flat-square" /></a>
-  <a href="https://github.com/KunalGhadge/arduinox/actions/workflows/publish.yml"><img alt="Build status" src="https://img.shields.io/github/actions/workflow/status/KunalGhadge/arduinox/publish.yml?style=flat-square&branch=dev" /></a>
+  <a href="https://github.com/KunalGhadge/arduinox/stargazers"><img alt="Stars" src="https://img.shields.io/github/stars/KunalGhadge/arduinox?style=flat-square" /></a>
+  <a href="https://github.com/KunalGhadge/arduinox/blob/main/LICENSE"><img alt="License" src="https://img.shields.io/github/license/KunalGhadge/arduinox?style=flat-square" /></a>
 </p>
 
 <p align="center">
@@ -40,109 +41,142 @@
 
 ---
 
-## ⚡ La Revolución: La IA se encuentra con el hardware físico
+## 📥 Download & Install
 
-En el pasado, el desarrollo integrado requería la búsqueda manual de hojas de datos, un mapeo de pines complejo y una depuración tediosa. **ArduinoX cambia el juego.** Al cerrar la brecha entre el razonamiento de IA de alto nivel y la ejecución física de bajo nivel, hemos transformado la forma en que se construye el hardware.
+### Windows
+Download [`arduinox.exe`](https://github.com/KunalGhadge/arduinox/releases/latest) → Run it. That's it.
 
-- **Inteligencia consciente del hardware**: No es solo un LLM genérico. ArduinoX comprende diagramas de circuitos, registros de sensores y abstracciones de periféricos.
-- **Ejecución física de "circuito cerrado"**: ArduinoX no solo escribe código; puede compilar, cargar y monitorear la salida serial para corregir errores en tiempo real.
-- **Resolución de problemas agentic**: Dile *"Constrúyeme una estación meteorológica con un DHT11 y una pantalla LCD"* y planificará el circuito, escribirá el C++ y verificará la construcción.
-
----
-
-## 🆚 ArduinoX frente al IDE de Arduino tradicional
-
-| Característica | IDE tradicional | ArduinoX |
-| :--- | :--- | :--- |
-| **Generación de código** | Manual / Fragmentos estáticos | **Programación en pareja de IA dinámica** |
-| **Configuración** | Instalador manual y controladores | **Configuración cero (CLI portátil integrada)** |
-| **Depuración** | Monitoreo serial manual | **Auto-depuración potenciada por IA** |
-| **Interfaz** | GUI básica | **TUI premium de alto rendimiento** |
-| **Inteligencia** | Ninguna | **Agentic (Construir, Planificar, Investigar)** |
-
----
-
-## 📥 Instalación (para usuarios)
-
-ArduinoX está diseñado para ser **portátil y libre de dependencias**.
-
-### **Windows (Una sola línea)**
-Abra PowerShell y ejecute:
-```powershell
-powershell -ExecutionPolicy ByPass -c "irm https://raw.githubusercontent.com/KunalGhadge/arduinox/main/install.ps1 | iex"
-```
-
-### **macOS / Linux (Una sola línea)**
-Abra la Terminal y ejecute:
+### macOS / Linux
 ```bash
-curl -fsSL https://raw.githubusercontent.com/KunalGhadge/arduinox/main/install | bash
+curl -fsSL https://github.com/KunalGhadge/arduinox/releases/latest/download/arduinox -o arduinox && chmod +x arduinox && ./arduinox
 ```
 
----
-
-## 🛠️ Uso básico
-
-### Comandos comunes
-
-| Comando | Descripción |
-| :--- | :--- |
-| `arduinox run` | Iniciar la TUI de IA interactiva (Comando principal) |
-| `arduinox auth login` | Inicie sesión de forma segura en su cuenta de ArduinoX Cloud |
-| `arduinox models list` | Ver y cambiar entre GPT-4, Claude y Gemini |
-| `arduinox --version` | Verifique su versión actual |
-
-### Operaciones específicas de Arduino
-Dentro de la TUI o CLI, puede utilizar disparadores de hardware especializados:
-
-- **Detección de placa**: `arduinox board list`
-- **Gestión de librerías**: `arduinox lib install <nombre>`
-- **Carga con un clic**: `arduinox upload --board <fqbn>`
+### Run from Source (any OS)
+```bash
+git clone https://github.com/KunalGhadge/arduinox.git && cd arduinox && bun install && bun run dev
+```
+> Windows users: run `.\setup.ps1` instead — it auto-installs Bun for you.
 
 ---
 
-## 👨‍💻 Construir y contribuir (para desarrolladores)
+## 🧠 What Makes ArduinoX Different
 
-¡Damos la bienvenida a los colaboradores! ArduinoX es un monorepo de alto rendimiento construido con **Bun** y **TypeScript**.
+ArduinoX is not a generic AI chatbot. It is a **hardware-aware agentic coding assistant** that understands physical electronics.
 
-### 🛠️ Configuración del desarrollador
-Asegúrese de tener instalado [Bun](https://bun.sh).
+### 🔩 Structured Hardware Knowledge
+- **`hardware.json` registry** — Every component (sensor, display, motor) has a structured JSON definition with exact pin maps, voltage specs, and library requirements. The AI reads real data, not guesses.
+- **`SKILL.md` per component** — Deep engineering wisdom: known bugs, wiring gotchas, voltage limits, library conflicts, and troubleshooting steps. The AI knows what can go wrong before you do.
+- **Physical pin layout awareness** — Knows that Arduino Uno right header is RX0→SCL (18 pins) and left header is A5→5V (13 pins). Not an approximation — exact pin-by-pin.
 
-1. **Clonar el repositorio**
-   ```bash
-   git clone https://github.com/KunalGhadge/arduinox.git
-   cd arduinox
-   ```
+### 🔌 Board & Connection Intelligence
+- **Board type detection** — Identifies Arduino Uno, ESP32, Nano, Mega and adjusts pin mappings, voltage logic, and library recommendations automatically.
+- **COM port conflict detection** — Warns if Pins 0/1 (TX/RX) are occupied before upload, preventing the classic "upload failed" error.
+- **Auto-installs board cores** — Detects missing AVR/ESP32 board packages and installs them via Arduino CLI.
+- **Voltage clarification** — Asks "Is this a 3.3V or 5V sensor?" before generating wiring instructions. Prevents fried components.
 
-2. **Instalar dependencias**
-   ```bash
-   bun install
-   ```
+### 🛡️ Safety & Guardrails
+- **Current limit warnings** — Flags when a component draws more than 40mA (Arduino pin limit) and suggests transistor/MOSFET switching.
+- **Voltage mismatch protection** — Warns about 5V→3.3V connections and recommends voltage dividers or level shifters.
+- **Power budget tracking** — Calculates total current draw and warns when exceeding USB power limits (~500mA).
+- **Flyback diode reminders** — Automatically suggests protection diodes when motors, fans, or relays are used.
 
-3. **Ejecutar en modo de desarrollo**
-   ```bash
-   bun run dev
-   ```
+### 🔄 Staged Workflow
+ArduinoX follows a structured build pipeline:
 
-### 🛡️ Pautas de contribución (estabilidad primero)
-Para mantener la aplicación estable para miles de usuarios:
-- **No realizar envíos directos a la rama principal**: Utilice siempre Pull Requests.
-- **Seguridad de tipos**: Ejecute `bun run typecheck` antes de realizar un commit.
-- **Integridad de marca**: Mantenga la marca "ArduinoX" en todas las cadenas de cara al usuario.
-- **Preservación de la interfaz de usuario**: No modifique el diseño de CSS o TUI sin una discusión previa en Discord.
+```
+Brainstorm → Plan → Connect → Build → Verify → Debug
+```
+
+1. **Brainstorm** — Understand what the user wants to build.
+2. **Plan** — Select components from the hardware registry, map pins, check compatibility.
+3. **Connect** — Generate step-by-step wiring instructions with pin tables.
+4. **Build** — Write C++ code using correct libraries and pin assignments.
+5. **Verify** — Compile, upload, and monitor serial output.
+6. **Debug** — Auto-debug loop: read errors → diagnose → fix → re-upload.
+
+### 🔁 Auto-Debug Loop
+- Reads compiler errors and serial output.
+- Diagnoses common failure patterns (wrong pin, missing library, baud rate mismatch).
+- Applies fixes and re-uploads automatically.
+- Can fix connection issues (loose wires, wrong I2C address, contrast potentiometer misconfiguration).
+
+### 🎨 Premium TUI Experience
+- **Minecraft-style block logo** with themed rendering.
+- **30+ color themes** (Vercel, Dracula, Catppuccin, Tokyo Night, and more).
+- **Multi-model support** — GPT-4, Claude, Gemini, and open-source models.
+- **`/paste` command** — Paste clipboard content directly into prompts.
+- **Arduino-specific tips** — Contextual tips about hardware, wiring, and debugging.
 
 ---
 
-## 🤝 Colaboradores
+## 🆚 ArduinoX vs. Traditional Arduino IDE
 
-*¡Estamos buscando a nuestros primeros colaboradores de la comunidad! Envíe su primer PR para ver su nombre aquí.*
+| Feature | Arduino IDE | ArduinoX |
+| :--- | :--- | :--- |
+| Code Generation | Manual | **AI-powered, hardware-aware** |
+| Wiring Help | None | **Pin-accurate wiring tables** |
+| Debugging | Manual Serial Monitor | **Auto-debug loop** |
+| Component Knowledge | None | **Structured `hardware.json` + `SKILL.md`** |
+| Safety Checks | None | **Voltage, current, pin conflict warnings** |
+| Board Core Setup | Manual install | **Auto-detection & install** |
+| Interface | Basic GUI | **Premium high-performance TUI** |
+| Multi-Model AI | ❌ | **GPT-4, Claude, Gemini, open-source** |
 
 ---
 
-## 📣 Comunidad y soporte
+## 🛠️ Supported Hardware
+
+| Component | Type | Status |
+| :--- | :--- | :--- |
+| Arduino Uno R3 | Board | ✅ Full pin layout |
+| ESP32 WROOM 32 | Board | ✅ Full pin layout |
+| IR Sensor (TCRT5000) | Sensor | ✅ Active LOW, 3-pin |
+| DHT11 | Sensor | ✅ Temp & humidity |
+| HC-SR04 Ultrasonic | Sensor | ✅ Distance |
+| SG90 Servo | Actuator | ✅ PWM control |
+| 5V DC Fan | Actuator | ✅ Transistor switching |
+| 16x2 LCD (HD44780) | Display | ✅ 16-pin raw + I2C |
+| I2C LCD Adapter (PCF8574) | Adapter | ✅ 4-pin |
+| Mini Breadboard | Prototyping | ✅ 30-row layout |
+| 1kΩ Resistor | Passive | ✅ |
+
+> More components are added continuously. Each includes `hardware.json` + `SKILL.md` with engineering wisdom.
+
+---
+
+## 👨‍💻 Build & Contribute
+
+ArduinoX is a high-performance monorepo built with **Bun** and **TypeScript**.
+
+### Developer Setup
+```bash
+git clone https://github.com/KunalGhadge/arduinox.git
+cd arduinox
+bun install
+bun run dev
+```
+
+### Build Standalone Binary
+```bash
+cd packages/opencode
+bun run build --single
+# Output: dist/opencode-windows-x64/bin/opencode.exe
+```
+
+### Contribution Rules
+- Always use Pull Requests — no direct pushes to main.
+- Run `bun run typecheck` before committing.
+- Maintain "ArduinoX" branding in all user-facing strings.
+- Do not modify TUI layout without discussion.
+
+---
+
+## 📣 Community
 
 - [Discord](https://arduinox.ai/discord)
 - [X (Twitter)](https://x.com/arduinox)
-- [Documentación](https://arduinox.ai/docs)
+- [Documentation](https://arduinox.ai/docs)
 
 ---
-<p align="center">Construido con ❤️ para la comunidad de hardware.</p>
+
+<p align="center">Built with ❤️ for the Hardware Community.</p>

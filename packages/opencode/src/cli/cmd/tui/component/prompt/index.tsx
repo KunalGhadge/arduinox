@@ -147,6 +147,21 @@ export function Prompt(props: PromptProps) {
     ),
   )
 
+  createEffect(() => {
+    const text = store.prompt.input
+    if (text.includes("/paste")) {
+      Clipboard.read().then((clipboard) => {
+        if (clipboard && clipboard.mime === "text/plain") {
+          const expanded = text.replaceAll("/paste", clipboard.data)
+          setStore("prompt", "input", expanded)
+          input.setText(expanded)
+          input.gotoBufferEnd()
+          renderer.requestRender()
+        }
+      }).catch(() => { })
+    }
+  })
+
   // Initialize agent/model/variant from last user message when session changes
   let syncedSessionID: string | undefined
   createEffect(() => {
@@ -851,7 +866,12 @@ export function Prompt(props: PromptProps) {
                     })
                     return
                   }
-                  // If no image, let the default paste behavior continue
+                  // If no image, handle text paste
+                  if (content?.mime === "text/plain") {
+                    input.insertText(content.data)
+                    e.preventDefault()
+                    return
+                  }
                 }
                 if (keybind.match("input_clear", e) && store.prompt.input !== "") {
                   input.clear()

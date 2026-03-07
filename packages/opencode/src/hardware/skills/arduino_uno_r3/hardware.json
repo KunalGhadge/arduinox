@@ -3,7 +3,51 @@
     "name": "Arduino Uno R3",
     "type": "base_board",
     "fqbn": "arduino:avr:uno",
+    "microcontroller": "ATmega328P",
+    "clock_speed": "16 MHz",
     "operating_voltage": "5V",
+    "input_voltage_recommended": "7-12V",
+    "input_voltage_limits": "6-20V",
+    "flash_memory": "32 KB (0.5 KB bootloader)",
+    "sram": "2 KB",
+    "eeprom": "1 KB",
+    "pin_layout": {
+        "right_side_top_to_bottom": [
+            "RX0 (Digital 0 / Serial Receive)",
+            "TX1 (Digital 1 / Serial Transmit)",
+            "2 (Digital / Interrupt 0)",
+            "3~ (Digital / PWM / Interrupt 1)",
+            "4 (Digital)",
+            "5~ (Digital / PWM)",
+            "6~ (Digital / PWM)",
+            "7 (Digital)",
+            "8 (Digital)",
+            "9~ (Digital / PWM)",
+            "10~ (Digital / PWM / SS)",
+            "11~ (Digital / PWM / MOSI)",
+            "12 (Digital / MISO)",
+            "13 (Digital / SCK / Built-in LED)",
+            "GND",
+            "AREF (Analog Reference)",
+            "SDA (I2C Data / Digital 18 / A4)",
+            "SCL (I2C Clock / Digital 19 / A5)"
+        ],
+        "left_side_top_to_bottom": [
+            "A5 (Analog 5 / SCL)",
+            "A4 (Analog 4 / SDA)",
+            "A3 (Analog 3)",
+            "A2 (Analog 2)",
+            "A1 (Analog 1)",
+            "A0 (Analog 0)",
+            "VIN (External Power Input 7-12V)",
+            "GND",
+            "GND",
+            "5V (Regulated Output)",
+            "3.3V (Output, 50mA max)",
+            "RESET",
+            "5V"
+        ]
+    },
     "digital_pins": [
         0,
         1,
@@ -36,10 +80,15 @@
         10,
         11
     ],
+    "interrupt_pins": {
+        "INT0": 2,
+        "INT1": 3
+    },
     "communication": {
         "i2c": {
             "sda": "A4",
-            "scl": "A5"
+            "scl": "A5",
+            "note": "Also accessible via dedicated SDA/SCL header pins near AREF"
         },
         "spi": {
             "ss": 10,
@@ -49,8 +98,12 @@
         },
         "serial": {
             "rx": 0,
-            "tx": 1
+            "tx": 1,
+            "note": "Shared with USB-to-Serial. Disconnect devices on 0/1 before uploading."
         }
     },
-    "description": "The classic Arduino Uno. 5V logic."
+    "built_in_led_pin": 13,
+    "max_current_per_pin_mA": 40,
+    "max_current_5v_pin_mA": 500,
+    "description": "The classic Arduino Uno R3. Uses the ATmega328P microcontroller at 16 MHz. 5V logic. Viewing from opposite side of USB plug: right header has digital pins 0-13, GND, AREF, SDA, SCL. Left header has A5-A0, VIN, 2x GND, 5V, 3.3V, RESET, 5V."
 }

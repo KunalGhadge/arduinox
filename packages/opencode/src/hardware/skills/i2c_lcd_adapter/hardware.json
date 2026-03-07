@@ -1,0 +1,29 @@
+{
+    "id": "i2c_lcd_adapter_pcf8574",
+    "name": "I2C LCD Adapter Module (PCF8574)",
+    "type": "adapter",
+    "operating_voltage": "5V",
+    "i2c_address_default": "0x27",
+    "i2c_address_alternate": "0x3F",
+    "has_potentiometer": true,
+    "potentiometer_function": "Adjusts LCD contrast (replaces the need for an external potentiometer on VEE)",
+    "pins": {
+        "gnd": "Ground (-)",
+        "vcc": "Power (+5V)",
+        "sda": "I2C Data line (connect to Arduino SDA / A4)",
+        "scl": "I2C Clock line (connect to Arduino SCL / A5)"
+    },
+    "pin_order_left_to_right": [
+        "GND",
+        "VCC",
+        "SDA",
+        "SCL"
+    ],
+    "connects_to": "LCD 16x2 (HD44780) 16-pin header",
+    "pre_soldered": false,
+    "connection_note": "This module is NOT pre-soldered to the LCD. Solder the 16-pin header to the LCD first, then plug the adapter onto the LCD pins. Alternatively, connect via mini breadboard jumper wires.",
+    "libraries_required": [
+        "LiquidCrystal_I2C"
+    ],
+    "description": "PCF8574-based I2C backpack for 16x2/20x4 LCD displays. Reduces 16-pin LCD wiring to just 4 wires (GND, VCC, SDA, SCL). Has onboard potentiometer for contrast adjustment. Not pre-soldered with LCD — must be connected manually."
+}

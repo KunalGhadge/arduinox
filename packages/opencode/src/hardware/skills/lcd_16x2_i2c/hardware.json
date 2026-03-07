@@ -1,17 +1,51 @@
 {
-    "id": "lcd_16x2_i2c",
-    "name": "16x2 Character LCD with I2C Backpack",
+    "id": "lcd_16x2_raw",
+    "name": "16x2 Character LCD (HD44780, 16-Pin Raw)",
     "type": "display",
     "operating_voltage": "5V",
+    "controller": "Hitachi HD44780",
     "pins": {
-        "vcc": "5V Power (+)",
-        "gnd": "Ground (-)",
-        "sda": "I2C Data",
-        "scl": "I2C Clock"
+        "1_VSS": "Ground (0V)",
+        "2_VCC": "Power Supply (+5V)",
+        "3_VEE": "Contrast Adjustment (connect to potentiometer wiper)",
+        "4_RS": "Register Select (HIGH=Data, LOW=Command)",
+        "5_RW": "Read/Write (HIGH=Read, LOW=Write — usually tied to GND)",
+        "6_E": "Enable (pulse HIGH to latch data)",
+        "7_DB0": "Data Bit 0 (not used in 4-bit mode)",
+        "8_DB1": "Data Bit 1 (not used in 4-bit mode)",
+        "9_DB2": "Data Bit 2 (not used in 4-bit mode)",
+        "10_DB3": "Data Bit 3 (not used in 4-bit mode)",
+        "11_DB4": "Data Bit 4",
+        "12_DB5": "Data Bit 5",
+        "13_DB6": "Data Bit 6",
+        "14_DB7": "Data Bit 7",
+        "15_LED_PLUS": "Backlight Anode (+5V through 220Ω resistor)",
+        "16_LED_MINUS": "Backlight Cathode (GND)"
     },
-    "i2c_address": "0x27 or 0x3F",
-    "libraries_required": [
-        "LiquidCrystal I2C"
+    "pin_order_left_to_right": [
+        "1-VSS",
+        "2-VCC",
+        "3-VEE",
+        "4-RS",
+        "5-R/W",
+        "6-E",
+        "7-DB0",
+        "8-DB1",
+        "9-DB2",
+        "10-DB3",
+        "11-DB4",
+        "12-DB5",
+        "13-DB6",
+        "14-DB7",
+        "15-LED+",
+        "16-LED-"
     ],
-    "description": "Standard alphanumeric LCD that uses the I2C protocol."
+    "modes": {
+        "4_bit": "Uses DB4-DB7 only (saves 4 Arduino pins). DB0-DB3 left unconnected.",
+        "8_bit": "Uses DB0-DB7 (faster but uses 8 Arduino pins)."
+    },
+    "libraries_required": [
+        "LiquidCrystal"
+    ],
+    "description": "Standard 16x2 alphanumeric LCD with 16 pins. Requires a potentiometer on VEE for contrast. Can be used directly (many wires) or via an I2C adapter module (PCF8574) for 4-wire connection."
 }

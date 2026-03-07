@@ -3,10 +3,18 @@
     "name": "5V DC Cooling Fan",
     "type": "actuator",
     "operating_voltage": "5V",
+    "current_draw_mA": "100-200",
     "pins": {
-        "vcc": "Power (Red)",
-        "gnd": "Ground (Black)"
+        "vcc": "Power (Red wire) — connect to +5V via transistor/MOSFET",
+        "gnd": "Ground (Black wire)"
     },
+    "pin_count": 2,
+    "wire_colors": {
+        "red": "VCC (+)",
+        "black": "GND (-)"
+    },
+    "requires_transistor": true,
+    "transistor_note": "Fan draws 100-200mA which exceeds Arduino pin limit of 40mA. MUST use NPN transistor (e.g., PN2222, TIP120) or N-channel MOSFET (IRLZ44N) to switch power. Add a flyback diode (1N4007) across fan terminals.",
     "libraries_required": [],
-    "description": "Standard DC brushless fan for active cooling."
+    "description": "2-wire DC brushless cooling fan. Red=VCC, Black=GND. Draws 100-200mA — DO NOT connect directly to Arduino digital pin. Use a transistor/MOSFET to switch it."
 }

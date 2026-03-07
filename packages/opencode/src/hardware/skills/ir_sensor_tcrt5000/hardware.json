@@ -1,0 +1,26 @@
+{
+    "id": "ir_sensor_tcrt5000",
+    "name": "IR Obstacle Avoidance Sensor (TCRT5000)",
+    "type": "sensor",
+    "operating_voltage": "3.3V - 5V",
+    "output_type": "Active LOW",
+    "pins": {
+        "out": "Digital Output (Active LOW — reads 0 when obstacle detected)",
+        "gnd": "Ground (-)",
+        "vcc": "Power (+) 3.3V or 5V"
+    },
+    "pin_order_left_to_right": [
+        "OUT",
+        "GND",
+        "VCC"
+    ],
+    "detection_range_cm": "2 - 30 (adjustable via onboard potentiometer)",
+    "has_potentiometer": true,
+    "potentiometer_function": "Adjusts detection distance sensitivity",
+    "indicator_leds": {
+        "power_led": "Lights when VCC is connected",
+        "signal_led": "Lights when obstacle is detected (output goes LOW)"
+    },
+    "libraries_required": [],
+    "description": "3-pin IR proximity sensor module. Pins left-to-right: OUT, GND, VCC. Output is Active LOW (0V when obstacle detected, 5V when clear). Has onboard potentiometer to adjust sensitivity range."
+}

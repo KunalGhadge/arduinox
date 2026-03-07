@@ -1,9 +1,54 @@
 {
-    "id": "mini_breadboard_170",
-    "name": "Mini Breadboard (170 Tie-Points)",
+    "id": "mini_breadboard_400",
+    "name": "Mini Breadboard (400 Tie-Points)",
     "type": "prototyping",
     "operating_voltage": "N/A",
+    "layout": {
+        "rows": 30,
+        "terminal_columns": [
+            "a",
+            "b",
+            "c",
+            "d",
+            "e",
+            "f",
+            "g",
+            "h",
+            "i"
+        ],
+        "center_gap": "Between columns e and f (DIP IC groove)",
+        "left_terminal_strip": {
+            "columns_connected": [
+                "a",
+                "b",
+                "c",
+                "d",
+                "e"
+            ],
+            "note": "Each row of 5 holes (a-e) is electrically connected horizontally"
+        },
+        "right_terminal_strip": {
+            "columns_connected": [
+                "f",
+                "g",
+                "h",
+                "i"
+            ],
+            "note": "Each row of 4 holes (f-i) is electrically connected horizontally"
+        },
+        "power_rails": {
+            "left_side": {
+                "positive": "30 holes, one vertical line marked + (red)",
+                "negative": "30 holes, one vertical line marked - (blue)"
+            },
+            "right_side": {
+                "positive": "30 holes, one vertical line marked + (red)",
+                "negative": "30 holes, one vertical line marked - (blue)"
+            },
+            "note": "Power rails run vertically. Each rail is one continuous connection top-to-bottom. Left and right rails are NOT connected to each other — bridge them with a jumper wire."
+        }
+    },
     "pins": {},
     "libraries_required": [],
-    "description": "Small solderless breadboard with 17 rows of 5 interconnected sockets on each side of the center groove."
+    "description": "Solderless breadboard with 30 rows. Center columns a-b-c-d-e and f-g-h-i separated by a DIP groove. Left and right sides each have two vertical power rails (+ and -). Power rails are NOT connected across sides — use jumper wires to bridge."
 }

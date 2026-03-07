@@ -5,7 +5,13 @@
             "name": "Arduino Uno R3",
             "type": "base_board",
             "fqbn": "arduino:avr:uno",
+            "microcontroller": "ATmega328P",
+            "clock_speed": "16 MHz",
             "operating_voltage": "5V",
+            "input_voltage_recommended": "7-12V",
+            "flash_memory": "32 KB",
+            "sram": "2 KB",
+            "eeprom": "1 KB",
             "digital_pins": [
                 0,
                 1,
@@ -54,7 +60,42 @@
                     "tx": 1
                 }
             },
-            "description": "The classic Arduino Uno R3. Uses the ATmega328P microcontroller."
+            "pin_layout_right": [
+                "RX0",
+                "TX1",
+                "2",
+                "~3",
+                "4",
+                "~5",
+                "~6",
+                "7",
+                "8",
+                "~9",
+                "~10",
+                "~11",
+                "12",
+                "13",
+                "GND",
+                "AREF",
+                "SDA",
+                "SCL"
+            ],
+            "pin_layout_left": [
+                "A5",
+                "A4",
+                "A3",
+                "A2",
+                "A1",
+                "A0",
+                "VIN",
+                "GND",
+                "GND",
+                "5V",
+                "3.3V",
+                "RESET",
+                "5V"
+            ],
+            "description": "The classic Arduino Uno R3. ATmega328P at 16 MHz, 5V logic."
         },
         {
             "id": "esp32_wroom",
@@ -133,34 +174,108 @@
             "name": "IR Obstacle Avoidance Sensor (TCRT5000)",
             "type": "sensor",
             "operating_voltage": "3.3V - 5V",
+            "output_type": "Active LOW",
             "pins": {
-                "vcc": "Power (+)",
+                "out": "Digital Output (Active LOW when obstacle detected)",
                 "gnd": "Ground (-)",
-                "out": "Digital Output (Active LOW when obstacle detected)"
+                "vcc": "Power (+)"
             },
+            "pin_order": [
+                "OUT",
+                "GND",
+                "VCC"
+            ],
             "libraries_required": [],
-            "description": "Standard infrared proximity/obstacle sensor. Active low output (0V when triggered)."
-        },
-        {
-            "id": "mini_breadboard_170",
-            "name": "Mini Breadboard (170 Tie-Points)",
-            "type": "prototyping",
-            "operating_voltage": "N/A",
-            "pins": {},
-            "libraries_required": [],
-            "description": "Small 170-point solderless breadboard with adhesive back for prototyping."
+            "description": "3-pin IR proximity sensor. Active LOW output. Pins left-to-right: OUT, GND, VCC."
         },
         {
             "id": "fan_5v_dc",
             "name": "5V DC Cooling Fan",
             "type": "actuator",
             "operating_voltage": "5V",
+            "current_draw_mA": "100-200",
             "pins": {
-                "vcc": "Power (Red)",
-                "gnd": "Ground (Black)"
+                "vcc": "Power (Red wire)",
+                "gnd": "Ground (Black wire)"
             },
+            "requires_transistor": true,
             "libraries_required": [],
-            "description": "Small 5V cooling fan for electronic components. Typical current: 120-150mA."
+            "description": "2-wire DC fan. Draws 100-200mA — use a transistor/MOSFET to switch, not a direct Arduino pin."
+        },
+        {
+            "id": "lcd_16x2_raw",
+            "name": "16x2 Character LCD (HD44780, 16-Pin)",
+            "type": "display",
+            "operating_voltage": "5V",
+            "pins": {
+                "1_VSS": "Ground",
+                "2_VCC": "+5V",
+                "3_VEE": "Contrast (potentiometer)",
+                "4_RS": "Register Select",
+                "5_RW": "Read/Write (tie to GND)",
+                "6_E": "Enable",
+                "7_DB0": "Data 0 (unused in 4-bit)",
+                "8_DB1": "Data 1 (unused in 4-bit)",
+                "9_DB2": "Data 2 (unused in 4-bit)",
+                "10_DB3": "Data 3 (unused in 4-bit)",
+                "11_DB4": "Data 4",
+                "12_DB5": "Data 5",
+                "13_DB6": "Data 6",
+                "14_DB7": "Data 7",
+                "15_LED_PLUS": "Backlight + (via 220Ω)",
+                "16_LED_MINUS": "Backlight - (GND)"
+            },
+            "libraries_required": [
+                "LiquidCrystal"
+            ],
+            "description": "Standard 16x2 LCD with 16 pins. Use directly (many wires) or via I2C adapter module."
+        },
+        {
+            "id": "i2c_lcd_adapter_pcf8574",
+            "name": "I2C LCD Adapter Module (PCF8574)",
+            "type": "adapter",
+            "operating_voltage": "5V",
+            "i2c_address": "0x27 or 0x3F",
+            "has_potentiometer": true,
+            "pins": {
+                "gnd": "Ground",
+                "vcc": "+5V",
+                "sda": "I2C Data (Arduino A4/SDA)",
+                "scl": "I2C Clock (Arduino A5/SCL)"
+            },
+            "pin_order": [
+                "GND",
+                "VCC",
+                "SDA",
+                "SCL"
+            ],
+            "pre_soldered_with_lcd": false,
+            "libraries_required": [
+                "LiquidCrystal_I2C"
+            ],
+            "description": "PCF8574 I2C backpack for LCD. 4 wires instead of 16. NOT pre-soldered — connect via breadboard or solder."
+        },
+        {
+            "id": "mini_breadboard_400",
+            "name": "Mini Breadboard (400 Tie-Points)",
+            "type": "prototyping",
+            "operating_voltage": "N/A",
+            "rows": 30,
+            "columns": [
+                "a",
+                "b",
+                "c",
+                "d",
+                "e",
+                "f",
+                "g",
+                "h",
+                "i"
+            ],
+            "power_rails": "2 per side (+ and -), 30 holes each, left and right NOT connected",
+            "pins": {},
+            "libraries_required": [],
+            "description": "30-row solderless breadboard. Columns a-e connected, f-i connected, separated by DIP groove. Power rails on left and right edges."
         },
         {
             "id": "resistor_1k",
@@ -172,23 +287,7 @@
                 "pin2": "Terminal 2"
             },
             "libraries_required": [],
-            "description": "Standard 1kΩ carbon film or metal film resistor. Bands: Brown, Black, Red, Gold."
-        },
-        {
-            "id": "lcd_16x2_i2c",
-            "name": "16x2 Character LCD with I2C Backpack",
-            "type": "display",
-            "operating_voltage": "5V",
-            "pins": {
-                "gnd": "Ground (-)",
-                "vcc": "5V Power (+)",
-                "sda": "I2C Data line (Connect to board SDA)",
-                "scl": "I2C Clock line (Connect to board SCL)"
-            },
-            "libraries_required": [
-                "LiquidCrystal I2C"
-            ],
-            "description": "A 16-character by 2-line LCD display that uses only two pins (I2C) for communication."
+            "description": "Standard 1kΩ resistor. Bands: Brown, Black, Red, Gold."
         },
         {
             "id": "dht11",
@@ -217,7 +316,7 @@
                 "gnd": "Ground (-)"
             },
             "libraries_required": [],
-            "description": "Measuring distance using ultrasound. Range: 2cm to 400cm."
+            "description": "Ultrasonic distance sensor. Range: 2cm to 400cm."
         },
         {
             "id": "servo_sg90",
@@ -225,7 +324,7 @@
             "type": "actuator",
             "operating_voltage": "4.8V - 6V",
             "pins": {
-                "signal": "PWM Signal (usually Orange/White)",
+                "signal": "PWM Signal (Orange/White)",
                 "vcc": "Power (Red)",
                 "gnd": "Ground (Brown/Black)"
             },
